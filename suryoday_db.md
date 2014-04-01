@@ -49,6 +49,15 @@ BUSINESS RULES
 		- pan_no
 		- vip                               //boolean value, true if the person falls under the category vip according to the trust
 
+	* MEMBERS may have many RELATIVES
+		- id                   				//this person is related the the person in third column of this table             
+		- relation_id						//this id will define the relation of first person to second person
+		- id 		
+
+	* RELATION can be of different types, Thus the user can add many relations
+		- relation_id
+		- relation_name						
+
 	* MEMBERS who are EMPLOYEE have some credentials which are as follows :
 		- id
 		- department_id
