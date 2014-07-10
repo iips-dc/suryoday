@@ -3,15 +3,17 @@
     <meta charset="utf-8">
     <title>Human Resource</title>
     
-    <!-- including Core Css files -->
-    <?php include("../_inc/cssLinks.inc.php"); ?>
+    <!-- Configuration for the absoulte path -->
+     <?php include "../../config_global.php";   ?>
+    <!-- Core Css -->
+    <?php include "../../includes/cssLinks.inc.php";   ?>
 
 </head>
 <body class="claro">
     <div class="container">
 
         <!-- including html coding of Menu bar -->
-        <?php include("../_inc/menu_bar.inc.php"); ?>
+        <?php include("../../includes/menu_bar.inc.php"); ?>
 
         <!-- Start of page's Border Layout  -->
         <div dojoType="dijit.layout.BorderContainer" style="width: 100%;height: 100%;"> 
@@ -64,8 +66,8 @@
     </div>
     <!-- .container -->
 
-    <?php include("../_inc/jsLinks.inc.php"); ?> 
-    <?php include("../_inc/dojo_accordion.inc.php"); ?>
+    <?php include("../../includes/jsLinks.inc.php"); ?> 
+    <?php include("../../includes/dojo_widgets.inc.php"); ?>
 
     <!-- Script for dynamic loading of pages in center region -->
     <script>

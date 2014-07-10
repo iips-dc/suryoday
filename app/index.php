@@ -1,11 +1,19 @@
+<!-- Including files for DB connection and Session Control -->
+<?php
+    require 'core.inc.php';
+    require 'connect.inc.php';
+?>
+<!-- /End of includes -->
 <html>
 <head>
     <meta charset="utf-8">
     <title>Tutorial: Hello Dojo!</title>
     
+    <!-- Configuration for the absoulte path -->
+     <?php include "../config_global.php";   ?>
     <!-- Core Css -->
-    <link rel="stylesheet" type="text/css" href="../assests/js/dojo-1.9.3/dijit/themes/claro/claro.css">
-    <link rel="stylesheet" type="text/css" href="../assests/css/bootstrap/bootstrap-responsive.css">
+    <?php include "../includes/cssLinks.inc.php";   ?>
+
     <style>
     body{
         background-color: #73008F;
@@ -17,6 +25,10 @@
 </style>
 </head>
 <body>
+
+<?php 
+    if(loggedIn()){ #This function is in /includes/login/core.inc.pho for verfying user session
+?>
     <div class="container">
         <h2  style="text-align:center">Welcome To Suryoday Trust</h2><br><br>
 
@@ -24,7 +36,7 @@
 
         <div class="row ">
             <div class="col-md-3 text-center">
-                <a href="human_resource/index"><img class="img-responsive" src="assets/images/hr.jpg"></a>
+                <a href="human_resource/index.php"><img class="img-responsive" src="assets/images/hr.jpg"></a>
             </div>
             <div class="col-md-3">
                 <a href="public_relations"><img class="img-responsive" src="assets/images/pr.jpg"></a>
@@ -55,7 +67,18 @@
     </div>
     <!-- .container -->
 
-    <?php include("_inc/jsLinks.inc.php"); ?>
+        <?php include("../_inc/jsLinks.inc.php"); ?>
+        <script>
+            dojo.require("dijit.dijit"); //for using dojo's layout system
+            dojo.require("dijit.form.Button");
+        </script>
+        
+    <?php
+        } #End of LoggedIn function
+        else{
+            include 'includes/login/login_form.inc.php' ;
+        }
+    ?>
 
 </body>
 </html>
