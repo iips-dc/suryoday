@@ -1,6 +1,8 @@
 <?php
-	require $PATH . 'includes/core.inc.php';
+	require '../config_global.php';
+	require '../includes/login/core.inc.php';
+	session_unset();
 	session_destroy();
-	header('location: '.$httpReferer);
+	header('location: ../index.php');
 	#header('location: '.$httpReferer);
 ?>
