@@ -41,13 +41,13 @@
                  <h3 style="color:#ED440C">Services</h3><hr>
                 <div class="row ">
                     <div class="col-md-3 text-center">
-                        <a href="#"><img class="img-responsive img-rounded" src="assests/img/baithak.jpg"></a>
+                        <a href="app/baithak/index.php"><img class="img-responsive img-rounded" src="assests/img/baithak.jpg"></a>
                     </div>
                     <div class="col-md-3">
                         <a href="public_relations"><img class="img-responsive img-rounded" src="assests/img/pr.jpg"></a>
                     </div>
                     <div class="col-md-3">
-                         <a href="human_resource/index.php"><img class="img-responsive img-rounded" src="assests/img/hr.jpg"></a>
+                         <a href="app/human_resource/index.php"><img class="img-responsive img-rounded" src="assests/img/hr.jpg"></a>
                     </div>
                     <div class="col-md-3">
                         <a href="todo"><img class="img-responsive img-rounded" src="assests/img/todo.png"></a>
