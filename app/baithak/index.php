@@ -29,38 +29,58 @@
                 <?php include('../../includes/menu_bar.inc.php'); ?>
             </div> 
 
-            <!-- Accordion on left region of layout -->
-            <div dojoType="dijit.layout.ContentPane" style="width:180px;" region="left">  
-                <div dojoType="dijit.layout.AccordionContainer" style="width: 100%;height: 100%;"> 
-                    <div dojoType="dijit.layout.ContentPane" title="Service 1"> 
-                        <ul style="list-style:none;">
-                            <li><a href="#">Option 2</a></li>
-                            <li><a id="empInfo" href="#">Employee List</a></li>
-                            <li><a href="#">Option 3</a></li>
-                            <li><a href="#">Option 4</a></li>
-                        </ul>
-                    </div>
-                    <div dojoType="dijit.layout.ContentPane" title="Service 2"> 
-                        This is the content in blade 2. 
-                    </div> 
-                    <div dojoType="dijit.layout.ContentPane" title="Service 3"> 
-                        This is the content in blade 3. 
-                    </div> 
-                    <div dojoType="dijit.layout.ContentPane" title="Service 4"> 
-                        This is the content in blade 4. 
-                    </div> 
-                    <div dojoType="dijit.layout.ContentPane" title="Service 5"> 
-                        This is the content in blade 5. 
-                    </div> 
-                    <div dojoType="dijit.layout.ContentPane" title="Service 6"> 
-                        This is the content in blade 6. 
-                    </div> 
-                </div>
-            </div>
+            
 
             <!-- Center Region of layout -->
              <div dojoType="dijit.layout.ContentPane" id="content" region="center" splitter="true"> 
-                This is the content in the center section. 
+
+                <!-- Vertical Left tabs -->             
+                <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true" tabPosition="left-h">
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Token Generation" selected="true" id="tokenGeneration">
+
+                        <!-- Form for Token Geneeration -->
+                        <form action="generate_token.php" method="get">
+                            <pre>
+                                <!-- text inputs:  dijit/form/TextBox -->
+                                <strong>Userid: </strong>           <input type="text" name="userid" placeholder="userid" id="userid"
+                                    data-dojo-type="dijit/form/TextBox"/>      <input type="submit" value="Find Visitor" label="Find Visitor" id="findVisitorButton"
+                                    data-dojo-type="dijit/form/Button" />
+                                 
+                                <strong>First Name:  </strong>      <input type="text" name="firstName" placeholder="John" id="firstName"
+                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot first name!"' /> <br/>
+            
+                                <strong>Last Name: </strong>        <input type="text" name="lastName" placeholder="Smith" id="lastName"
+                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot last name!"' /> <br/>
+            
+                                <strong>Contact Number: </strong>   <input type="text" name="contactNumber" placeholder="98267594100" id="contactNumber"
+                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props="regExp:'[\\w]+', missingMessage:'Ooops! You forgot contact number!' " /> <br/>
+            
+                                <strong>Occupation: </strong>       <input type="text" name="occupation" placeholder="Student" id="occupation"
+                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot Occupation!"' /> <br/>
+                            </pre>   
+                                                     
+                                <!-- submit button:  dijit/form/Button -->
+                                <input type="submit" value="Generate Token" label="Generate Token" id="generateTokenButton"
+                                    data-dojo-type="dijit/form/Button" />
+            
+                                <input type="submit" value="Register" label="Register" id="registerButton"
+                                    data-dojo-type="dijit/form/Button" />   
+            
+                                <input type="submit" value="Update Information" label="Update Information" id="updateInformationButton"
+                                    data-dojo-type="dijit/form/Button" />                 
+                        </form><!-- form for tokenGeneration ends -->
+                        
+                    </div>
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Upay">
+                    Lorem ipsum and all around - second...
+                    </div>
+                    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="closable:true" title="Donation">
+                    Lorem ipsum and all around - last...
+                    </div>
+                    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="closable:true" title="Donation">
+                    Lorem ipsum and all around - last...
+                    </div>
+                </div><!-- end TabContainer -->
             </div> 
         
             <!-- Bottom Region of Layout -->
@@ -77,7 +97,7 @@
     <!-- Script for dynamic loading of pages in center region -->
     <script>
         require(["dojo/parser", "dijit/MenuBar", "dijit/MenuBarItem", "dijit/PopupMenuBarItem",
-    "dijit/DropDownMenu", "dijit/MenuItem"]);
+    "dijit/DropDownMenu", "dijit/MenuItem", "dijit/layout/TabContainer"]);
     </script>
 
     <?php
