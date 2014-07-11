@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Suryoday | Baithak</title>
+    <title>Suryoday | Schedular</title>
     
     <!-- Configuration for the absoulte path -->
      <?php include "../../config_global.php";   ?>
