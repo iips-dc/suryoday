@@ -21,7 +21,7 @@
 	}
 ?>
 	<br>
-	<h2 style="text-align:center">Please Login To Manage Suryodoay Trust</h2>
+	<h2 style="text-align:center">Please Login To Manage Suryodoay ERP</h2>
 	<form class="container" action="<?php echo $currentFile; ?>" method="post" id="loginForm">
         <div class="row">
             <div class="col-md-4">
