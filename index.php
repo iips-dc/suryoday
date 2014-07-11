@@ -24,7 +24,6 @@
 
 <!-- Including Header -->
 
-
 <?php 
     if(loggedIn()){ #This function is in /includes/login/core.inc.pho for verfying user session
 ?>
