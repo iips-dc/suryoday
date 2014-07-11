@@ -1,7 +1,8 @@
+<?php 
+	include $fp."/includes/header.inc.php";
+?>
 <?php
 	if(isset($_POST['username']) and isset($_POST['password'])){
-		echo $_POST['username'];
-		echo $_POST['password'];
 		$userName = $_POST['username'];
 		$password = $_POST['password'];
 		if(!empty($userName) and !empty($password)){
@@ -19,25 +20,9 @@
 		}
 	}
 ?>
-
+	<br>
 	<h2 style="text-align:center">Please Login To Manage Suryodoay Trust</h2>
 	<form class="container" action="<?php echo $currentFile; ?>" method="post" id="loginForm">
-		<!-- <fieldset style = "border: 3px solid skyblue; padding : 20px 10px 20px 10px;">
-			<div >
-			
-				<label> Username </label>
-				<input type = "text" class="form-control" name="userName" placeholder= "Enter Your Username or Email"> 
-				<br>
-				<label>Password</label>
-				<input type="password"  class="form-control" name="passWord" placeholder = "Enter Your Password">
-				<br>
-
-				<button class="btn btn-primary" type="submit"> Login</button>
-				<a style ="padding-top:10px;" class="pull-right" href="">Forgot the password</a>
-
-			</div>
-		</fieldset> -->
-
         <div class="row">
             <div class="col-md-4">
             </div>
@@ -58,3 +43,8 @@
         </div>
         <!-- .row -->
 	</form>
+
+	<script>
+		var myElement = document.querySelector(".header");
+		myElement.style.backgroundColor = "white";
+	</script>
