@@ -83,7 +83,7 @@
     <?php
         } #End of LoggedIn function
         else{
-            include 'includes/login/login_form.inc.php' ;
+            include '../../includes/login/login_form.inc.php' ;
         }
     ?>
 
