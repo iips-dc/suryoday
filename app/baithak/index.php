@@ -34,7 +34,7 @@
             <!-- Center Region of layout -->
              <div dojoType="dijit.layout.ContentPane" id="content" region="center" splitter="true"> 
 
-                <!-- Vertical Left tabs -->             
+                <!-- Vertical Left tabs begin -->             
                 <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true" tabPosition="left-h">
                     <div data-dojo-type="dijit/layout/ContentPane" title="Token Generation" selected="true" id="tokenGeneration">
 
@@ -84,7 +84,7 @@
                             <pre>
                                 <!-- text inputs:  dijit/form/TextBox -->
                                 <strong>Tokenid: </strong>          <input type="text" name="tokenid" placeholder="tokenid" id="tokenid"
-                                    data-dojo-type="dijit/form/TextBox"/>    
+                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot Problem!"'/>    
                                  
                                 <strong>Bithakid:  </strong>        <input type="text" name="bithakid" placeholder="0012" id="bithakid"
                                     data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot bithakid!"' /> 
@@ -99,7 +99,7 @@
                                 <strong>Reason: </strong>           <input type="text" name="reason" placeholder="Better if done in next month." id="reason"
                                     data-dojo-type="dijit/form/Textarea" style:"width:50px;" />                                 
                                 <!-- Drop down list:  dijit/form/FilteringSelect -->
-                                <strong>Assigned To: </strong>      <select name="assignedTo" id="assignedTo" data-dojo-type="dijit/form/FilteringSelect">
+                                <strong>Assigned To: </strong>      <select name="assignedTo" id="assignedTo" data-dojo-type="dijit/form/FilteringSelect" required="true">
                                     <option value="">Select a member</option>
                                     <option value="abc">Abc</option>
                                     <option value="xyz">Xyz</option>
@@ -118,24 +118,36 @@
                     </div>
 
                     <!-- Donation tab bigins -->
-                    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="closable:true" title="Donation">
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Donation">
                         <!-- Form for Donation begins -->
                         <form action="donation.php" method="get">
                             <pre>
                                 <!-- text inputs:  dijit/form/TextBox -->
                                 <strong>Tokenid: </strong>          <input type="text" name="tokenid" placeholder="tokenid" id="tokenid"
-                                    data-dojo-type="dijit/form/TextBox"/>                                 
+                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot tokenid"'/>                                 
                                 <!-- radio buttons:  dijit/form/RadioButton -->
                                 <strong>For Project: </strong>      <input type="radio" id="forProject" name="project" checked="checked"
                                     data-dojo-type="dijit/form/RadioButton" />  <label for="radio1">Yes</label>  <input type="radio" id="notForProject" name="project"
                                     data-dojo-type="dijit/form/RadioButton" />  <label for="radio2">No</label>
 
-                                <strong>Type: </strong>             <input type="radio" id="kind" name="donationType" checked="checked"
-                                    data-dojo-type="dijit/form/RadioButton" />  <label for="radio1">Kind</label>  <input type="radio" id="cash" name="donationType"
-                                    data-dojo-type="dijit/form/RadioButton" />  <label for="radio2">Cash</label>
+                                <strong>Type: </strong>             <input type="radio" id="typeKind" name="donationType" checked="checked"
+                                    data-dojo-type="dijit/form/RadioButton" />  <label for="radio1">Kind</label>  <input type="radio" id="typeCash" name="donationType"
+                                    data-dojo-type="dijit/form/RadioButton" />  <label for="radio2">Cash</label>                                                   
                                 
-                                <strong>: </strong>           <input type="text" name="reason" placeholder="Better if done in next month." id="reason"
-                                    data-dojo-type="dijit/form/Textarea" style:"width:50px;" />                                 
+                                <strong>DD/Check Number: </strong>  <input type="text" name="ddCheckNumber" placeholder="45203965" id="ddCheckNumber"
+                                    data-dojo-type="dijit/form/TextBox" disabled="true" /> 
+
+                                <strong>Amount </strong>            <input type="text" name="amount" placeholder="9000" id="amount"
+                                    data-dojo-type="dijit/form/TextBox" disabled="true"/> Rs.
+
+                                <strong>PAN Number: </strong>       <input type="text" name="panNumber" placeholder="45203965" id="panNumber"
+                                    data-dojo-type="dijit/form/TextBox" disabled="true"/> 
+
+                                <strong>Value: </strong>            <input type="text" name="kindvalue" placeholder="Rice" id="kindValue"
+                                    data-dojo-type="dijit/form/TextBox"/> 
+
+                                <strong>Quantity: </strong>         <input type="text" name="kindquantity" placeholder="45203965" id="kindQuantity"
+                                    data-dojo-type="dijit/form/TextBox"/> 
                                 <!-- Drop down list:  dijit/form/FilteringSelect -->
                                 <strong>Received By: </strong>      <select name="receivedBy" id="receivedBy" data-dojo-type="dijit/form/FilteringSelect">
                                     <option value="">Select a member</option>
@@ -144,21 +156,43 @@
                                     <option value="pqr">Pqr</option>
                                 </select>
 
-                                <strong>Remark: </strong>           <input type="text" name="remark" placeholder="to be done urgently!" id="remark"
-                                    data-dojo-type="dijit/form/Textarea"/> <br/>                           
+                                <strong>Remark: </strong>           <input type="text" name="remark" placeholder="to be used for xyz!" id="remark"
+                                    data-dojo-type="dijit/form/Textarea"/>                          
+
+                                <strong>Details: </strong>          <input type="text" name="details" placeholder="" id="details"
+                                    data-dojo-type="dijit/form/Textarea"/>                         
                                 <!-- submit button:  dijit/form/Button -->
-                                <center>
+                            
                                 <input type="submit" value="Donation Submit" label="Submit" id="donationSubmit"
                                     data-dojo-type="dijit/form/Button" />
-                                </center>                     
+                                                  
                              </pre>                          
                         </form> <!-- Donation Form ends -->
                     </div>
 
-                    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="closable:true" title="Anything Else">
-                    Lorem ipsum and all around - last...
-                    </div>
-                </div><!-- end TabContainer -->
+                    <!-- Registration and Updation tab -->
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Forms">
+                        <!-- Inner Tabs for Registration and Updataion sepatrely begins-->
+                        <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true">
+                            <div data-dojo-type="dijit/layout/ContentPane" title="Register" selected="true">
+                                <h3> List of Bhakts yet to Register:</h3>
+                                <form action="register.php" method="get">
+                                    <input type="submit" value="registrationForms" label="Generate" id="registerationForms"
+                                    data-dojo-type="dijit/form/Button" />
+                                </form>
+                            </div>
+                            <div data-dojo-type="dijit/layout/ContentPane" title="Update">
+                                <h3> List of Bhakts need to update information:</h3>
+                                <form action="updateOccupation.php" method="get">
+                                    <input type="submit" value="generateForms" label="Generate" id="generateForms"
+                                    data-dojo-type="dijit/form/Button" />
+                                </form>
+                            </div>
+                            
+                        </div><!-- end Inner Tabs for Registration and Updataion sepatrely-->
+                    </div> <!-- Registration and Updation tab ends. -->
+
+                </div><!-- Vertical Left tabs end -->
             </div> 
         
             <!-- Bottom Region of Layout -->
@@ -175,8 +209,31 @@
     <!-- Script for dynamic loading of pages in center region -->
     <script>
         require(["dojo/parser", "dijit/MenuBar", "dijit/MenuBarItem", "dijit/PopupMenuBarItem",
-    "dijit/DropDownMenu", "dijit/MenuItem", "dijit/layout/TabContainer" ]);
-    </script>
+    "dijit/DropDownMenu", "dijit/MenuItem", "dijit/layout/TabContainer", "dijit/form/RadioButton", "dojo/domReady!", "dijit/form/Textarea" ]);
+
+     <!-- Donation form GUI part as per cash/kind     -->
+     
+     
+     //document.getElementById("typeCash").onselect=function(){document.getElementById('panNumber').disabled = true;}
+     document.getElementById("typeKind").onclick=function(){
+        document.getElementById('kindValue').disabled = false;
+        document.getElementById('kindQuantity').disabled = false;
+
+        document.getElementById('panNumber').disabled = true;
+        document.getElementById('amount').disabled = true;
+        document.getElementById('ddCheckNumber').disabled = true;
+    }
+
+    document.getElementById("typeCash").onclick=function(){
+        document.getElementById('panNumber').disabled = false;
+        document.getElementById('amount').disabled = false;
+        document.getElementById('ddCheckNumber').disabled = false;
+
+        document.getElementById('kindValue').disabled = true;
+        document.getElementById('kindQuantity').disabled = true;
+    }
+
+     </script>
 
     <?php
         } #End of LoggedIn function
