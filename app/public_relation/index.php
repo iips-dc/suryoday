@@ -141,29 +141,6 @@
     <script>
         require(["dojo/parser", "dijit/MenuBar", "dijit/MenuBarItem", "dijit/PopupMenuBarItem",
     "dijit/DropDownMenu", "dijit/MenuItem", "dijit/layout/TabContainer", "dijit/form/RadioButton", "dojo/domReady!", "dijit/form/Textarea" ]);
-
-     <!-- Donation form GUI part as per cash/kind     -->
-     
-     
-     //document.getElementById("typeCash").onselect=function(){document.getElementById('panNumber').disabled = true;}
-     document.getElementById("typeKind").onclick=function(){
-        document.getElementById('kindValue').disabled = false;
-        document.getElementById('kindQuantity').disabled = false;
-
-        document.getElementById('panNumber').disabled = true;
-        document.getElementById('amount').disabled = true;
-        document.getElementById('ddCheckNumber').disabled = true;
-    }
-
-    document.getElementById("typeCash").onclick=function(){
-        document.getElementById('panNumber').disabled = false;
-        document.getElementById('amount').disabled = false;
-        document.getElementById('ddCheckNumber').disabled = false;
-
-        document.getElementById('kindValue').disabled = true;
-        document.getElementById('kindQuantity').disabled = true;
-    }
-
      </script>
 
     <?php
