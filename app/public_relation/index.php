@@ -85,46 +85,55 @@
 
                     <!-- Send SMS tab begins -->
                     <div data-dojo-type="dijit/layout/ContentPane" title="Send SMS">
-                        <!-- Form for Upay -->
-                        <form action="sendSMS.php" method="get">
-                            <pre>
-                                <!-- text inputs:  dijit/form/TextBox -->
-                                <strong>Tokenid: </strong>          <input type="text" name="tokenid" placeholder="tokenid" id="tokenid"
-                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot Problem!"'/>    
-                                 
-                                <strong>Bithakid:  </strong>        <input type="text" name="bithakid" placeholder="0012" id="bithakid"
-                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot bithakid!"' /> 
-            
-                                <strong>Problem: </strong>          <input type="text" name="problem" placeholder="Only Darshan" id="problem"
-                                    data-dojo-type="dijit/form/Textarea" required="true" data-dojo-props='missingMessage:"Ooops! You forgot Problem!"' /> 
-                                 <!-- radio buttons:  dijit/form/RadioButton -->
-                                <strong>Status: </strong>           <input type="radio" id="statusSolved" name="status" checked="checked"
-                                    data-dojo-type="dijit/form/RadioButton" />  <label for="radio1">Solved</label>  <input type="radio" id="statusUnsolved" name="status"
-                                    data-dojo-type="dijit/form/RadioButton" />  <label for="radio2">Unsolved</label>
-
-                                <strong>Reason: </strong>           <input type="text" name="reason" placeholder="Better if done in next month." id="reason"
-                                    data-dojo-type="dijit/form/Textarea" style:"width:50px;" />                                 
-                                <!-- Drop down list:  dijit/form/FilteringSelect -->
-                                <strong>Assigned To: </strong>      <select name="assignedTo" id="assignedTo" data-dojo-type="dijit/form/FilteringSelect" required="true">
-                                    <option value="">Select a member</option>
-                                    <option value="abc">Abc</option>
-                                    <option value="xyz">Xyz</option>
-                                    <option value="pqr">Pqr</option>
-                                </select>
-
-                                <strong>Remark: </strong>           <input type="text" name="remark" placeholder="to be done urgently!" id="remark"
-                                    data-dojo-type="dijit/form/Textarea"/> <br/>                           
-                                <!-- submit button:  dijit/form/Button -->
-                                <center>
-                                <input type="submit" value="Upay Submit" label="Submit" id="upaySubmit"
+                        <!-- Inner Tabs for birthday, anniversary and other information sepatrely begins-->
+                        <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true">
+                            <!--Birthday tab begins -->
+                            <div data-dojo-type="dijit/layout/ContentPane" title="Birthday" selected="true">
+                                <h3> Today is Birthday of Bhakts:</h3>
+                                <ul>
+                                    <li>-------User1--------</li>
+                                    <li>-------User2--------</li>
+                                    <li>-------User3--------</li>
+                                    <li>-------User4--------</li>
+                                    <li>-------User5--------</li>
+                                </ul>
+                                <form action="sendSms.php" method="get">
+                                    <input type="submit" value="birthday" label="Send" id="birthday"
                                     data-dojo-type="dijit/form/Button" />
-                                </center>                     
-                             </pre>                          
-                        </form><!-- form for Send SMS ends -->
-                    </div>
+                                </form>
+                            </div> <!-- birthday tab ends -->
+                            
+                            <!-- Anniversary tab begins -->
+                            <div data-dojo-type="dijit/layout/ContentPane" title="Anniversary">
+                                <h3> Today is Anniversary of following Bhakts:</h3>
+                                <ul>
+                                    <li>-------User1--------</li>
+                                    <li>-------User2--------</li>
+                                    <li>-------User3--------</li>
+                                    <li>-------User4--------</li>
+                                    <li>-------User5--------</li>
+                                </ul>
+                                <form action="sendSms.php" method="get">
+                                    <input type="submit" value="anniversary" label="Send" id="anniversary"
+                                    data-dojo-type="dijit/form/Button" />
+                                </form>
+                            </div> <!-- Anniversary tab ends -->
+
+                            <!-- Information tab begins -->
+                            <div data-dojo-type="dijit/layout/ContentPane" title="Information">
+                                <h3> Comming soon!!</h3>
+                                
+                                <form action="sendSms.php" method="get">
+                                    <input type="submit" value="information" label="Send" id="information"
+                                    data-dojo-type="dijit/form/Button" />
+                                </form>
+                            </div> <!-- Information tab ends -->
+
+                        </div><!-- end Inner Tabs for birthday, anniversary and other information sepatrely-->
+                    </div><!-- Send SMS tab end -->
                     
                 </div><!-- Vertical Left tabs end -->
-            </div> <!-- Send SMS tab ends -->
+            </div> 
         
             <!-- Bottom Region of Layout -->
             <div dojoType="dijit.layout.ContentPane" region="bottom" splitter="true"> 
