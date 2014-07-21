@@ -16,7 +16,7 @@
                 PR
             </div>
 
-            <div data-dojo-type="dijit/MenuBarItem" data-dojo-props="onClick:function(){window.location.replace('<?php echo $PATH."index.php"; ?>');}">
+            <div data-dojo-type="dijit/MenuBarItem" data-dojo-props="onClick:function(){window.location.replace('<?php echo $PATH."app/donation/index.php"; ?>');}">
                 Donations
             </div>
 
