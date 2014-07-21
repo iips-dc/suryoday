@@ -36,6 +36,7 @@
 
                 <!-- Vertical Left tabs begin -->             
                 <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true" tabPosition="left-h">
+                    <!-- Tab for token generation begin -->
                     <div data-dojo-type="dijit/layout/ContentPane" title="Token Generation" selected="true" id="tokenGeneration">
 
                         <!-- Form for Token Geneeration -->
@@ -117,59 +118,6 @@
                         </form><!-- form for Upay ends -->
                     </div>
 
-                    <!-- Donation tab bigins -->
-                    <div data-dojo-type="dijit/layout/ContentPane" title="Donation">
-                        <!-- Form for Donation begins -->
-                        <form action="donation.php" method="get">
-                            <pre>
-                                <!-- text inputs:  dijit/form/TextBox -->
-                                <strong>Tokenid: </strong>          <input type="text" name="tokenid" placeholder="tokenid" id="tokenid"
-                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot tokenid"'/>                                 
-                                <!-- radio buttons:  dijit/form/RadioButton -->
-                                <strong>For Project: </strong>      <input type="radio" id="forProject" name="project" checked="checked"
-                                    data-dojo-type="dijit/form/RadioButton" />  <label for="radio1">Yes</label>  <input type="radio" id="notForProject" name="project"
-                                    data-dojo-type="dijit/form/RadioButton" />  <label for="radio2">No</label>
-
-                                <strong>Type: </strong>             <input type="radio" id="typeKind" name="donationType" checked="checked"
-                                    data-dojo-type="dijit/form/RadioButton" />  <label for="radio1">Kind</label>  <input type="radio" id="typeCash" name="donationType"
-                                    data-dojo-type="dijit/form/RadioButton" />  <label for="radio2">Cash</label>                                                   
-                                
-                                <strong>DD/Check Number: </strong>  <input type="text" name="ddCheckNumber" placeholder="45203965" id="ddCheckNumber"
-                                    data-dojo-type="dijit/form/TextBox" disabled="true" /> 
-
-                                <strong>Amount </strong>            <input type="text" name="amount" placeholder="9000" id="amount"
-                                    data-dojo-type="dijit/form/TextBox" disabled="true"/> Rs.
-
-                                <strong>PAN Number: </strong>       <input type="text" name="panNumber" placeholder="45203965" id="panNumber"
-                                    data-dojo-type="dijit/form/TextBox" disabled="true"/> 
-
-                                <strong>Value: </strong>            <input type="text" name="kindvalue" placeholder="Rice" id="kindValue"
-                                    data-dojo-type="dijit/form/TextBox"/> 
-
-                                <strong>Quantity: </strong>         <input type="text" name="kindquantity" placeholder="45203965" id="kindQuantity"
-                                    data-dojo-type="dijit/form/TextBox"/> 
-                                <!-- Drop down list:  dijit/form/FilteringSelect -->
-                                <strong>Received By: </strong>      <select name="receivedBy" id="receivedBy" data-dojo-type="dijit/form/FilteringSelect">
-                                    <option value="">Select a member</option>
-                                    <option value="abc">Abc</option>
-                                    <option value="xyz">Xyz</option>
-                                    <option value="pqr">Pqr</option>
-                                </select>
-
-                                <strong>Remark: </strong>           <input type="text" name="remark" placeholder="to be used for xyz!" id="remark"
-                                    data-dojo-type="dijit/form/Textarea"/>                          
-
-                                <strong>Details: </strong>          <input type="text" name="details" placeholder="" id="details"
-                                    data-dojo-type="dijit/form/Textarea"/>                         
-                                <!-- submit button:  dijit/form/Button -->
-                            
-                                <input type="submit" value="Donation Submit" label="Submit" id="donationSubmit"
-                                    data-dojo-type="dijit/form/Button" />
-                                                  
-                             </pre>                          
-                        </form> <!-- Donation Form ends -->
-                    </div>
-
                     <!-- Registration and Updation tab -->
                     <div data-dojo-type="dijit/layout/ContentPane" title="Forms">
                         <!-- Inner Tabs for Registration and Updataion sepatrely begins-->
@@ -211,34 +159,10 @@
         require(["dojo/parser", "dijit/MenuBar", "dijit/MenuBarItem", "dijit/PopupMenuBarItem",
     "dijit/DropDownMenu", "dijit/MenuItem", "dijit/layout/TabContainer", "dijit/form/RadioButton", "dojo/domReady!", "dijit/form/Textarea" ]);
 
-     <!-- Donation form GUI part as per cash/kind     -->
-     
-     
-     //document.getElementById("typeCash").onselect=function(){document.getElementById('panNumber').disabled = true;}
-     document.getElementById("typeKind").onclick=function(){
-        document.getElementById('kindValue').disabled = false;
-        document.getElementById('kindQuantity').disabled = false;
-
-        document.getElementById('panNumber').disabled = true;
-        document.getElementById('amount').disabled = true;
-        document.getElementById('ddCheckNumber').disabled = true;
-    }
-
-    document.getElementById("typeCash").onclick=function(){
-        document.getElementById('panNumber').disabled = false;
-        document.getElementById('amount').disabled = false;
-        document.getElementById('ddCheckNumber').disabled = false;
-
-        document.getElementById('kindValue').disabled = true;
-        document.getElementById('kindQuantity').disabled = true;
-    }
-
-     </script>
-
     <?php
         } #End of LoggedIn function
         else{
-            include 'includes/login/login_form.inc.php' ;
+            include '../../includes/login/login_form.inc.php' ;
         }
     ?>
 

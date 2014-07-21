@@ -43,7 +43,7 @@
                         <a href="app/baithak/index.php"><img class="img-responsive img-rounded" src="assests/img/baithak.jpg"></a>
                     </div>
                     <div class="col-md-3">
-                        <a href="public_relations"><img class="img-responsive img-rounded" src="assests/img/pr.jpg"></a>
+                        <a href="app/public_relation/index.php"><img class="img-responsive img-rounded" src="assests/img/pr.jpg"></a>
                     </div>
                     <div class="col-md-3">
                          <a href="app/human_resource/index.php"><img class="img-responsive img-rounded" src="assests/img/hr.jpg"></a>

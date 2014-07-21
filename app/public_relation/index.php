@@ -141,6 +141,10 @@
     <script>
         require(["dojo/parser", "dijit/MenuBar", "dijit/MenuBarItem", "dijit/PopupMenuBarItem",
     "dijit/DropDownMenu", "dijit/MenuItem", "dijit/layout/TabContainer", "dijit/form/RadioButton", "dojo/domReady!", "dijit/form/Textarea" ]);
+<<<<<<< HEAD
+=======
+     </script>
+>>>>>>> 8ef2f29f801554545c2217fd9c83d821884d7d68
 
     <?php
         } #End of LoggedIn function
