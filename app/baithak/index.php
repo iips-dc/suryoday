@@ -47,13 +47,13 @@
                                     data-dojo-type="dijit/form/TextBox"/>      <input type="submit" value="Find Visitor" label="Find Visitor" id="findVisitorButton"
                                     data-dojo-type="dijit/form/Button" /><br/>
                                  
-                                <strong>First Name:  </strong>      <input type="text" name="firstName" placeholder="John" id="firstName"
+                                <strong>First Name:  </strong>      <input type="text" name="first_name" placeholder="John" id="firstName"
                                     data-dojo-type="dijit/form/TextBox"/> <br/>
             
-                                <strong>Last Name: </strong>        <input type="text" name="lastName" placeholder="Smith" id="lastName"
+                                <strong>Last Name: </strong>        <input type="text" name="last_name" placeholder="Smith" id="lastName"
                                     data-dojo-type="dijit/form/TextBox"/> <br/>
             
-                                <strong>Contact Number: </strong>   <input type="text" name="contactNumber" placeholder="98267594100" id="contactNumber"
+                                <strong>Mobile Number: </strong>   <input type="text" name="mobile_number" placeholder="98267594100" id="contactNumber"
                                     data-dojo-type="dijit/form/TextBox"/> <br/>
             
                                 <strong>Occupation: </strong>       <input type="text" name="occupation" placeholder="Student" id="occupation"
@@ -147,13 +147,13 @@
                         <form action="add_baithak.php" method="post">
                             <pre>
                                 <!-- text inputs:  dijit/form/TextBox -->
-                                <strong>Date: </strong>           <input type="text" name="date" placeholder="2/9/9" id="baithakDate"
+                                <strong>Date: </strong>           <input type="text" name="baithak_date" placeholder="2/9/9" id="baithakDate"
                                     data-dojo-type="dijit/form/TextBox"/><br/>                                
-                                <strong>Time:  </strong>          <input type="text" name="time" placeholder="2PM" id="time"
+                                <strong>Time:  </strong>          <input type="text" name="baithak_time" placeholder="2PM" id="time"
                                     data-dojo-type="dijit/form/TextBox"/> <br/>            
-                                <strong>Location: </strong>       <input type="text" name="location" placeholder="Indore" id="location"
+                                <strong>Location: </strong>       <input type="text" name="baithak_location" placeholder="Indore" id="location"
                                     data-dojo-type="dijit/form/TextBox"/> <br/>            
-                                <strong>State: </strong>          <input type="text" name="state" placeholder="MP" id="state"
+                                <strong>State: </strong>          <input type="text" name="baithak_state" placeholder="MP" id="state"
                                     data-dojo-type="dijit/form/TextBox"/> <br/>            
                                 <strong>Head: </strong>           <select name="baithak_head" id="baithskHead" data-dojo-type="dijit/form/FilteringSelect" required="true">
                                     <option value="">Select a member</option>
