@@ -40,7 +40,7 @@
                     <div data-dojo-type="dijit/layout/ContentPane" title="Token Generation" selected="true" id="tokenGeneration">
 
                         <!-- Form for Token Geneeration -->
-                        <form action="generate_token.php" method="get">
+                        <form action="generate_token_submit.php" method="post">
                             <pre>
                                 <!-- text inputs:  dijit/form/TextBox -->
                                 <strong>Userid: </strong>           <input type="text" name="userid" placeholder="userid" id="userid"
@@ -48,30 +48,30 @@
                                     data-dojo-type="dijit/form/Button" /><br/>
                                  
                                 <strong>First Name:  </strong>      <input type="text" name="firstName" placeholder="John" id="firstName"
-                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot first name!"' /> <br/>
+                                    data-dojo-type="dijit/form/TextBox"/> <br/>
             
                                 <strong>Last Name: </strong>        <input type="text" name="lastName" placeholder="Smith" id="lastName"
-                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot last name!"' /> <br/>
+                                    data-dojo-type="dijit/form/TextBox"/> <br/>
             
                                 <strong>Contact Number: </strong>   <input type="text" name="contactNumber" placeholder="98267594100" id="contactNumber"
-                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props="regExp:'[\\w]+', missingMessage:'Ooops! You forgot contact number!' " /> <br/>
+                                    data-dojo-type="dijit/form/TextBox"/> <br/>
             
                                 <strong>Occupation: </strong>       <input type="text" name="occupation" placeholder="Student" id="occupation"
-                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot Occupation!"' /> <br/>
+                                    data-dojo-type="dijit/form/TextBox"/> <br/>
 
                                  <strong>Purpose: </strong>         <input type="text" name="purpose" placeholder="Darshan" id="purpose"
-                                    data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot Purpose!"' /> <br/>
+                                    data-dojo-type="dijit/form/TextBox"/> <br/>
                             </pre>   
                                                      
                                 <!-- submit button:  dijit/form/Button -->
                                 <center>
-                                <input type="submit" value="Generate Token" label="Generate Token" id="generateTokenButton"
+                                <input type="submit" name="generate_token" value="Generate Token" label="Generate Token" id="generateTokenButton"
                                     data-dojo-type="dijit/form/Button" />
             
-                                <input type="submit" value="Register" label="Register" id="registerButton"
+                                <input type="submit" name="register" value="Register" label="Register" id="registerButton"
                                     data-dojo-type="dijit/form/Button" />   
             
-                                <input type="submit" value="Update Information" label="Update Information" id="updateInformationButton"
+                                <input type="submit" name="update_information" value="Update Information" label="Update Information" id="updateInformationButton"
                                     data-dojo-type="dijit/form/Button" />   
                                 </center>              
                         </form><!-- form for tokenGeneration ends -->
@@ -107,7 +107,7 @@
                                     <option value="pqr">Pqr</option>
                                 </select>
 
-                                <strong>Remark: </strong>           <input type="text" name="remark" placeholder="to be done urgently!" id="remark"
+                                <strong>Remark: </strong>           <input type="text" name="upay_remark" placeholder="to be done urgently!" id="upayRemark"
                                     data-dojo-type="dijit/form/Textarea"/> <br/>                           
                                 <!-- submit button:  dijit/form/Button -->
                                 <center>
@@ -139,6 +139,41 @@
                             
                         </div><!-- end Inner Tabs for Registration and Updataion sepatrely-->
                     </div> <!-- Registration and Updation tab ends. -->
+
+                    <!-- Tab for new Baithak begin -->
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Add Baithak" id="addBaithak">
+
+                        <!-- Form for Add Baithak -->
+                        <form action="add_baithak.php" method="post">
+                            <pre>
+                                <!-- text inputs:  dijit/form/TextBox -->
+                                <strong>Date: </strong>           <input type="text" name="date" placeholder="2/9/9" id="baithakDate"
+                                    data-dojo-type="dijit/form/TextBox"/><br/>                                
+                                <strong>Time:  </strong>          <input type="text" name="time" placeholder="2PM" id="time"
+                                    data-dojo-type="dijit/form/TextBox"/> <br/>            
+                                <strong>Location: </strong>       <input type="text" name="location" placeholder="Indore" id="location"
+                                    data-dojo-type="dijit/form/TextBox"/> <br/>            
+                                <strong>State: </strong>          <input type="text" name="state" placeholder="MP" id="state"
+                                    data-dojo-type="dijit/form/TextBox"/> <br/>            
+                                <strong>Head: </strong>           <select name="baithak_head" id="baithskHead" data-dojo-type="dijit/form/FilteringSelect" required="true">
+                                    <option value="">Select a member</option>
+                                    <option value="abc">Abc</option>
+                                    <option value="xyz">Xyz</option>
+                                    <option value="pqr">Pqr</option>
+                                </select>
+
+                                <strong>Remark: </strong>         <input type="text" name="baithak_remark" placeholder="vip are not coming" id="baithakRemark"
+                                    data-dojo-type="dijit/form/Textarea"/> <br/>               
+                            </pre>   
+                                                     
+                                <!-- submit button:  dijit/form/Button -->
+                                <center>
+                                <input type="submit" name="add" value="Add" label="Add" id="add"
+                                    data-dojo-type="dijit/form/Button" />            
+                                </center>              
+                        </form><!-- form for Add Baithak ends -->
+                        
+                    </div> <!-- Add Baithak Tab ends -->
 
                 </div><!-- Vertical Left tabs end -->
             </div> 
