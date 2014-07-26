@@ -39,27 +39,32 @@
                     
                     <!-- Tab for project donation begin -->
                     <div data-dojo-type="dijit/layout/ContentPane" title="Project" selected="true" id="projectDonation">
-                        <!-- Form for Donation begins -->
-                        <form action="donation.php" method="post">
+                        <!-- Form for Donation for project begins -->
+                        <form action="donation_project.php" method="post">
                         <pre>
                         <!-- text inputs: dijit/form/TextBox -->
-                        <strong>Tokenid: </strong>          <input type="text" name="tokenid" placeholder="tokenid" id="tokenid"                        
-                        data-dojo-type="dijit/form/TextBox" required data-dojo-props='missingMessage:"Ooops! You forgot tokenid"'/>
+                        <strong>User Id: </strong>          <input type="text" name="userid" placeholder="userid" id="userid"                        
+                        data-dojo-type="dijit/form/TextBox" required data-dojo-props='missingMessage:"Ooops! You forgot userid"'/>
                         
-                        <strong>Project Name: </strong>     <select name="projectName" id="projectName" data-dojo-type="dijit/form/FilteringSelect">
-                        <option value="">Select a project</option>
-                        
-                        <option value="pqr">Pqr</option>
+                        <strong>Project Name: </strong>     <select name="projectName" id="projectName" data-dojo-type="dijit/form/FilteringSelect" required data-dojo-props='missingMessage:"Ooops! You forgot project name"'>
+                        <option value="-1">Select a project</option>
+                        <?php
+			
+							$result = mysqli_query($con,"SELECT * FROM `project`");
+							while ($row = mysqli_fetch_array($result)){
+   								echo '<option value="'.$row["project_id"].'"> '.$row["project_name"].'</options>';
+							}
+
+						?>
                         </select>
-                        
                         <!-- radio buttons: dijit/form/RadioButton -->                                            
-                        <strong>Type: </strong>             <input type="radio" id="typeKind" name="donationType" checked="checked"
-                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio1">Kind</label> <input type="radio" id="typeCash" name="donationType"
+                         <strong>Type: </strong>             <input type="radio" id="typeKind" value="Kind" name="donationType" checked="checked"
+                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio1">Kind</label> <input type="radio" id="typeCash" value="Cash" name="donationType"
                         data-dojo-type="dijit/form/RadioButton" /> <label for="radio2">Cash</label>
                         
-                        <strong>Kind of Cash: </strong>     <input type="radio" id="KindCheque" name="donationType" checked="checked"
-                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio1">Cheque</label> <input type="radio" id="KindDD" name="donationType"
-                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio2">DD</label> <input type="radio" id="KindCash" name="donationType"
+                        <strong>Kind of Cash: </strong>     <input type="radio" id="typeCheque" value="Cheque" name="cashType" checked="checked"
+                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio1">Cheque</label> <input type="radio" id="typeDD" value="DD" name="cashType"
+                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio2">DD</label> <input type="radio" id="typeMoney" value="Money" name="cashType"
                         data-dojo-type="dijit/form/RadioButton" /> <label for="radio3">Cash</label>
                         
                         <strong>DD/Cheque Number: </strong> <input type="text" name="ddChequeNumber" placeholder="45203965" id="ddCheckNumber"
@@ -77,20 +82,29 @@
                         <strong>Quantity: </strong>         <input type="text" name="kindquantity" placeholder="45203965" id="kindQuantity"
                         data-dojo-type="dijit/form/TextBox"/>
                         <!-- Drop down list: dijit/form/FilteringSelect -->
-                        <strong>Received By: </strong>      <select name="receivedBy" id="receivedBy" data-dojo-type="dijit/form/FilteringSelect">
-                        <option value="">Select a member</option>
-                        
-                        <option value="pqr">Pqr</option>
+                        <strong>Received By: </strong>      <select name="receivedBy" id="receivedBy" data-dojo-type="dijit/form/FilteringSelect" required data-dojo-props='missingMessage:"Ooops! You forgot Recieved by"'>
+                        <option value="-1">Select a member</option>
+                        <?php
+			
+							$result = mysqli_query($con,"SELECT * FROM `employee_details`");
+							while ($row = mysqli_fetch_array($result)){
+   								echo '<option value="'.$row["user_id"].'"> '.$row["emp_name"].'</options>';
+							}
+
+						?>
                         </select>
                         
-                        <strong>Remark: </strong>           <input type="text" name="remark" placeholder="to be used for xyz!" id="remark"
+                        <strong>Remark: </strong>           <input type="text" name="remark" placeholder="special remarks" id="remark"
                         data-dojo-type="dijit/form/Textarea"/>
                         
-                        <strong>Details: </strong>          <input type="text" name="details" placeholder="" id="details"
+                        <strong>Usage Details: </strong>    <input type="text" name="useDetails" placeholder="to be used for xyz!" id="remark"
+                        data-dojo-type="dijit/form/Textarea"/>
+                        
+                        <strong>Details: </strong>          <input type="text" name="details" placeholder="donation details" id="details"
                         data-dojo-type="dijit/form/Textarea"/>
                         <center>
                         <!-- submit button: dijit/form/Button -->
-                        <input type="submit" value="Donation Submit" label="Submit" id="donationSubmit"
+                        <input type="submit" value="Donation Submit" label="Submit" id="projectDonationSubmit" name="projectDonationSubmit"
                         data-dojo-type="dijit/form/Button" />
                         </center>
                         </pre>
@@ -100,15 +114,62 @@
 
                     <!-- Trust donation tab begins -->
                     <div data-dojo-type="dijit/layout/ContentPane" title="Trust" id='trustDonation'>
+                    <!-- Form for Donation for trust begins -->
+                        <form action="donation_trust.php" method="post">
+                        <pre>
+                        <!-- text inputs: dijit/form/TextBox -->
+                        <strong>User Id: </strong>          <input type="text" name="userid" placeholder="userid" id="userid"                        
+                        data-dojo-type="dijit/form/TextBox" required data-dojo-props='missingMessage:"Ooops! You forgot userid"'/>
+                        <!-- radio buttons: dijit/form/RadioButton -->                                            
+                        <strong>Type: </strong>             <input type="radio" value="typeKind" name="donationType" checked="checked"
+                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio1">Kind</label> <input type="radio" value="typeCash" name="donationType"
+                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio2">Cash</label>
+                        
+                        <strong>Kind of Cash: </strong>     <input type="radio" id="KindCheque" name="cashType" checked="checked"
+                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio1">Cheque</label> <input type="radio" id="KindDD" name="cashType"
+                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio2">DD</label>  <input type="radio" id="typeMoney" name="cashType"
+                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio3">Cash</label>
+                        
+                        <strong>DD/Cheque Number: </strong> <input type="text" name="ddChequeNumber" placeholder="45203965" id="ddCheckNumber"
+                        data-dojo-type="dijit/form/TextBox"  />
+                        
+                        <strong>Amount </strong>            <input type="text" name="amount" placeholder="9000" id="amount"
+                        data-dojo-type="dijit/form/TextBox" /> Rs.
+                        
+                        <strong>PAN Number: </strong>       <input type="text" name="panNumber" placeholder="45203965" id="panNumber"
+                        data-dojo-type="dijit/form/TextBox" />
+                        
+                        <strong>Value: </strong>            <input type="text" name="kindvalue" placeholder="Rice" id="kindValue"
+                        data-dojo-type="dijit/form/TextBox"/>
+                        
+                        <strong>Quantity: </strong>         <input type="text" name="kindquantity" placeholder="45203965" id="kindQuantity"
+                        data-dojo-type="dijit/form/TextBox"/>
+                        <!-- Drop down list: dijit/form/FilteringSelect -->
+                        <strong>Received By: </strong>      <select name="receivedBy" id="receivedBy" data-dojo-type="dijit/form/FilteringSelect" required data-dojo-props='missingMessage:"Ooops! You forgot recienved by"'>
+                        <option value="">Select a member</option>
+                        
+                        <option value="pqr">Pqr</option>
+                        </select>
+                        
+                        <strong>Remark: </strong>           <input type="text" name="remark" placeholder="special remarks" id="remark"
+                        data-dojo-type="dijit/form/Textarea"/>
+                        
+                        <strong>Usage Details: </strong>    <input type="text" name="useDetails" placeholder="to be used for xyz!" id="remark"
+                        data-dojo-type="dijit/form/Textarea"/>
+                        
+                        <strong>Details: </strong>          <input type="text" name="details" placeholder="donation details" id="details"
+                        data-dojo-type="dijit/form/Textarea"/>
+                        <center>
+                        <!-- submit button: dijit/form/Button -->
+                        <input type="submit" value="Donation Submit" label="Submit" id="trustDonationSubmit"
+                        data-dojo-type="dijit/form/Button" />
+                        </center>
+                        </pre>
+                        </form> <!-- Donation Form ends -->
+                        
                         
                     </div><!-- Trust donation tab ends -->
-                    <!-- Tab for offrings begin -->
-                    <div data-dojo-type="dijit/layout/ContentPane" title="Offring" selected="true" id="offring">
-
-                        
-                    </div> <!-- offrings Tab ends -->
-
-
+                  
                 </div><!-- Vertical Left tabs end -->
             </div> 
         
