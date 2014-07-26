@@ -46,7 +46,7 @@
                         <strong>Tokenid: </strong>          <input type="text" name="tokenid" placeholder="tokenid" id="tokenid"                        
                         data-dojo-type="dijit/form/TextBox" required data-dojo-props='missingMessage:"Ooops! You forgot tokenid"'/>
                         
-                        <strong>Project Name: </strong>      <select name="projectName" id="projectName" data-dojo-type="dijit/form/FilteringSelect">
+                        <strong>Project Name: </strong>     <select name="projectName" id="projectName" data-dojo-type="dijit/form/FilteringSelect">
                         <option value="">Select a project</option>
                         
                         <option value="pqr">Pqr</option>
@@ -57,7 +57,12 @@
                         data-dojo-type="dijit/form/RadioButton" /> <label for="radio1">Kind</label> <input type="radio" id="typeCash" name="donationType"
                         data-dojo-type="dijit/form/RadioButton" /> <label for="radio2">Cash</label>
                         
-                        <strong>DD/Check Number: </strong>  <input type="text" name="ddCheckNumber" placeholder="45203965" id="ddCheckNumber"
+                        <strong>Kind of Cash: </strong>     <input type="radio" id="KindCheque" name="donationType" checked="checked"
+                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio1">Cheque</label> <input type="radio" id="KindDD" name="donationType"
+                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio2">DD</label> <input type="radio" id="KindCash" name="donationType"
+                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio3">Cash</label>
+                        
+                        <strong>DD/Cheque Number: </strong> <input type="text" name="ddChequeNumber" placeholder="45203965" id="ddCheckNumber"
                         data-dojo-type="dijit/form/TextBox"  />
                         
                         <strong>Amount </strong>            <input type="text" name="amount" placeholder="9000" id="amount"
