@@ -147,8 +147,9 @@
                         <form action="add_baithak.php" method="post">
                             <pre>
                                 <!-- text inputs:  dijit/form/TextBox -->
-                                <strong>Date: </strong>           <input type="text" name="baithak_date" placeholder="2/9/9" id="baithakDate"
-                                    data-dojo-type="dijit/form/TextBox"/><br/>                                
+                                <strong>Date: </strong>           <input type="text" name="baithak_date" placeholder="2014-12-01" id="baithakDate" 
+                                     value="2005-12-30" constraints="{datePattern:'yyyy-MM-dd', strict:true}" data-dojo-type="dijit/form/DateTextBox" 
+                                     required="true"/><br/>                                
                                 <strong>Time:  </strong>          <input type="text" name="baithak_time" placeholder="2PM" id="time"
                                     data-dojo-type="dijit/form/TextBox"/> <br/>            
                                 <strong>Location: </strong>       <input type="text" name="baithak_location" placeholder="Indore" id="location"
@@ -192,7 +193,8 @@
     <!-- Script for dynamic loading of pages in center region -->
     <script>
         require(["dojo/parser", "dijit/MenuBar", "dijit/MenuBarItem", "dijit/PopupMenuBarItem",
-    "dijit/DropDownMenu", "dijit/MenuItem", "dijit/layout/TabContainer", "dijit/form/RadioButton", "dojo/domReady!", "dijit/form/Textarea" ]);
+    "dijit/DropDownMenu", "dijit/MenuItem", "dijit/layout/TabContainer", "dijit/form/RadioButton", 
+    "dojo/domReady!", "dijit/form/Textarea", "dijit/form/DateTextBox" ]);
     </script>
     <?php
         } #End of LoggedIn function
