@@ -81,13 +81,13 @@
                     <!-- Upay tab begins -->
                     <div data-dojo-type="dijit/layout/ContentPane" title="Upay">
                         <!-- Form for Upay -->
-                        <form action="upay.php" method="get">
+                        <form action="upay.php" method="POST">
                             <pre>
                                 <!-- text inputs:  dijit/form/TextBox -->
                                 <strong>Tokenid: </strong>          <input type="text" name="tokenid" placeholder="tokenid" id="tokenid"
                                     data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot Problem!"'/>    
                                  
-                                <strong>Bithakid:  </strong>        <input type="text" name="bithakid" placeholder="0012" id="bithakid"
+                                <strong>Baithakid:  </strong>        <input type="text" name="baithakid" placeholder="0012" id="baithakid"
                                     data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot bithakid!"' /> 
             
                                 <strong>Problem: </strong>          <input type="text" name="problem" placeholder="Only Darshan" id="problem"
@@ -97,7 +97,7 @@
                                     data-dojo-type="dijit/form/RadioButton" />  <label for="radio1">Solved</label>  <input type="radio" id="statusUnsolved" name="status"
                                     data-dojo-type="dijit/form/RadioButton" />  <label for="radio2">Unsolved</label>
 
-                                <strong>Reason: </strong>           <input type="text" name="reason" placeholder="Better if done in next month." id="reason"
+                                <strong>Solution: </strong>           <input type="text" name="solution" placeholder="Better if done in next month." id="solution"
                                     data-dojo-type="dijit/form/Textarea" style:"width:50px;" />                                 
                                 <!-- Drop down list:  dijit/form/FilteringSelect -->
                                 <strong>Assigned To: </strong>      <select name="assignedTo" id="assignedTo" data-dojo-type="dijit/form/FilteringSelect" required="true">
