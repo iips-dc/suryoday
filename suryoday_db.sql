@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 13, 2014 at 09:36 AM
--- Server version: 5.6.12-log
--- PHP Version: 5.4.12
+-- Generation Time: Jul 28, 2014 at 06:01 PM
+-- Server version: 5.5.37-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `suryoday_db`
 --
-CREATE DATABASE IF NOT EXISTS `suryoday_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `suryoday_db`;
 
 -- --------------------------------------------------------
 
@@ -259,14 +257,21 @@ CREATE TABLE IF NOT EXISTS `relation` (
 CREATE TABLE IF NOT EXISTS `upaay` (
   `upaay_id` int(11) NOT NULL AUTO_INCREMENT,
   `baithak_id` int(11) NOT NULL,
-  `v_id` int(11) NOT NULL,
+  `token_id` int(11) NOT NULL,
   `samasya` varchar(50) NOT NULL,
   `upaay` varchar(50) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `assigned_to` int(11) NOT NULL,
   `remark` varchar(50) NOT NULL,
   PRIMARY KEY (`upaay_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `upaay`
+--
+
+INSERT INTO `upaay` (`upaay_id`, `baithak_id`, `token_id`, `samasya`, `upaay`, `status`, `assigned_to`, `remark`) VALUES
+(1, 1, 1, 'test', 'test', 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -338,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `user_relation` (
 --
 
 CREATE TABLE IF NOT EXISTS `visit_details` (
-  `sno` int(11) NOT NULL AUTO_INCREMENT,
+  `token_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `date_of_visit` date NOT NULL,
   `purpose_id` int(11) NOT NULL,
@@ -349,8 +354,15 @@ CREATE TABLE IF NOT EXISTS `visit_details` (
   `baithak_id` int(11) NOT NULL,
   `plant_given` tinyint(1) NOT NULL,
   `offering_id` int(11) NOT NULL,
-  PRIMARY KEY (`sno`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`token_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `visit_details`
+--
+
+INSERT INTO `visit_details` (`token_id`, `user_id`, `date_of_visit`, `purpose_id`, `status`, `upaay_id`, `donation_id`, `combo_id`, `baithak_id`, `plant_given`, `offering_id`) VALUES
+(1, 1, '2014-07-04', 1, 'test', 1, 1, 1, 1, 1, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
