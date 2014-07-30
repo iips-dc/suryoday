@@ -72,7 +72,7 @@
         
             <!-- Bottom Region of Layout -->
             <div dojoType="dijit.layout.ContentPane" region="bottom" splitter="true"> 
-                &copy; Suryoday Trust . <span style="float:right">Powered By <a  href="#">Developement Center</a> <span>
+                &copy; Suryoday Trust . <span style="float:right">Powered By <a  href="#">Developement Center</a> </span>
             </div>
         </div>
         <!-- end of Border Layout Container -->

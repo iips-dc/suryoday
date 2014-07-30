@@ -59,7 +59,7 @@ if(isset($_POST['trustDonationSubmit'])){//When submit button is clicked
 				$quantity = mysqli_real_escape_string($con,htmlentities($_POST['kindquantity']));
 				$amount = $value.'+'.$quantity;
 				$query = "INSERT INTO
-				 `suryoday_db`.`donation` ( `user_id`, `donation_type`, `donation_mode`, `donation_for_project`, `amount`, `received_by`, `entry_by`, `receipt_no`, `usage_details`, `remark`, `donation_details`,`pan_no`)
+				 `donation` ( `user_id`, `donation_type`, `donation_mode`, `donation_for_project`, `amount`, `received_by`, `entry_by`, `receipt_no`, `usage_details`, `remark`, `donation_details`,`pan_no`)
 				  VALUES ('$user_id', '$donationType', '', '$project', '$amount', '$received_by', '$username', '', '$usage_details', '$remarks', '$details','$pan')";
 				if($query_run = mysqli_query($con,$query)){
 					echo "Successful";
@@ -89,7 +89,7 @@ if(isset($_POST['trustDonationSubmit'])){//When submit button is clicked
 					}
 				if($amount >= 10000){//checks if amount is greater than 10000 PAN no is mentioned or not
 					if(!empty($_POST['panNumber'])){
-						$query = "INSERT INTO `suryoday_db`.`donation` (`donation_id`, `user_id`, `donation_type`, `donation_mode`, `donation_for_project`, `amount`, `received_by`, `entry_by`, `receipt_no`, `usage_details`, `remark`, `donation_details`,`pan_no`) VALUES (NULL, '$user_id', '$donationType', '$cashType', '$project', '$amount', '$received_by', '$username', '', '$usage_details', '$remarks', '$details','$pan')";
+						$query = "INSERT INTO `donation` (`donation_id`, `user_id`, `donation_type`, `donation_mode`, `donation_for_project`, `amount`, `received_by`, `entry_by`, `receipt_no`, `usage_details`, `remark`, `donation_details`,`pan_no`) VALUES (NULL, '$user_id', '$donationType', '$cashType', '$project', '$amount', '$received_by', '$username', '', '$usage_details', '$remarks', '$details','$pan')";
 						if($query_run = mysqli_query($con,$query)){
 					echo "Successful";
 					echo '<br><a href="index.php">Back to donations</a>';
@@ -105,7 +105,7 @@ if(isset($_POST['trustDonationSubmit'])){//When submit button is clicked
 						}
 					}
 				else {
-					$query = "INSERT INTO `suryoday_db`.`donation` (`donation_id`, `user_id`, `donation_type`, `donation_mode`, `donation_for_project`, `amount`, `received_by`, `entry_by`, `receipt_no`, `usage_details`, `remark`, `donation_details`,`pan_no`) VALUES (NULL, '$user_id', '$donationType', '$cashType', '$project', '$amount', '$received_by', '$username', '', '$usage_details', '$remarks', '$details','$pan')";
+					$query = "INSERT INTO `donation` (`donation_id`, `user_id`, `donation_type`, `donation_mode`, `donation_for_project`, `amount`, `received_by`, `entry_by`, `receipt_no`, `usage_details`, `remark`, `donation_details`,`pan_no`) VALUES (NULL, '$user_id', '$donationType', '$cashType', '$project', '$amount', '$received_by', '$username', '', '$usage_details', '$remarks', '$details','$pan')";
 						if($query_run = mysqli_query($con,$query)){
 					echo "Successful";
 					echo '<br><a href="index.php">Back to donations</a>';

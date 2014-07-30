@@ -7,7 +7,7 @@
 	$css_file_path = $fp. "/app/assets/_inc/cssLinks.inc.php";
 	$js_file_path = $fp. "/app/assets/_inc/jsLinks.inc.php";
 	#$PATH = "/" .basename(__DIR__) . "/" ;
-	$PATH = $new[1]. "/" ;#output - /ck/ck-management/
+	$PATH = $fp. "/" ;#output - /ck/ck-management/
 	
 
 ?>
