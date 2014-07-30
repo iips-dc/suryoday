@@ -2,6 +2,7 @@
 <?php
     include 'includes/login/core.inc.php';
     include 'includes/login/connect.inc.php';
+	ob_start();
 ?>
 <!-- /End of includes -->
 
@@ -108,8 +109,9 @@ if(isset($_POST['projectDonationSubmit'])){//When submit button is clicked
 				else {
 					$query = "INSERT INTO `donation` (`donation_id`, `user_id`, `donation_type`, `donation_mode`, `donation_for_project`, `amount`, `received_by`, `entry_by`, `receipt_no`, `usage_details`, `remark`, `donation_details`,`pan_no`) VALUES (NULL, '$user_id', '$donationType', '$cashType', '$project', '$amount', '$received_by', '$username', '', '$usage_details', '$remarks', '$details','$pan')";
 						if($query_run = mysqli_query($con,$query)){
-					echo "Successful";
-					echo '<br><a href="index.php">Back to donations</a>';
+					header('location: index.php');
+					#echo "Successful";
+					#echo '<br><a href="index.php">Back to donations</a>';
 					}
 				else{
 					echo 'Error in query.';
