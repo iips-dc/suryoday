@@ -5,8 +5,7 @@
 	if(isset($_POST['username']) and isset($_POST['password'])){
 		$userName = $_POST['username'];
 		$password = $_POST['password'];
-		if(!empty($userName) and !empty($password)){
-			echo "adkdkhf";
+		if(!empty($userName) and !empty($password)){			
 			$result = mysqli_query($con,"Select * from user_login where user_name ='".$userName."' and password = '".$password."'") or die(mysqli_error($con));
 			$row = mysqli_fetch_array($result);
 			if($row['user_name']==$userName and $row['password']==$password){
@@ -14,7 +13,7 @@
 				header('location:'.$currentFile);
 			}
 			else{
-				echo "Invalid Username/Password Combination";
+				echo " <center> <h3> Invalid Username/Password Combination </h3> </center>";
 			}
 			mysqli_close($con);
 		}
