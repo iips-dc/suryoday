@@ -43,23 +43,23 @@
 				    $assignedTo = $_POST['assignedTo'];
 				    $remark = $_POST['remark'];
 
-				    #Authenticating token_id and baithak_id from visit_details table
-				    $selectQuery = "SELECT * FROM `visit_details` WHERE `token_id` = '$tokenid' and `baithak_id`= '$baithakid'";
+				    #Authenticating token and baithak_id from visit_details table
+				    $selectQuery = "SELECT * FROM `visit_details` WHERE `token` = '$tokenid' and `baithak_id`= '$baithakid'";
 
 				    $checkValidTokenId = mysqli_query($con, $selectQuery);	
 				    $visitorExists = mysqli_num_rows($checkValidTokenId);
 				
 				    if ($visitorExists == 1) {
 				    	# code...
-				    	$insertQuery = "INSERT INTO `upaay` (`upaay_id`, `baithak_id`, `token_id`, `samasya`, `upaay`, `status`, `assigned_to`, `remark`) VALUES ('', '$baithakid', '$tokenid', '$problem', '$solution', '$status', '$assigned_to', '$remark')";  //requirement to change column of reason/upaay, v_id/token_id
+				    	$insertQuery = "INSERT INTO `upaay` (`upaay_id`, `baithak_id`, `token`, `samasya`, `upaay`, `status`, `assigned_to`, `remark`) VALUES ('', '$baithakid', '$tokenid', '$problem', '$solution', '$status', '$assigned_to', '$remark')";  //requirement to change column of reason/upaay, v_id/token
 				    	$insertQueryRun = mysqli_query($con, $insertQuery);
 
-				    	$upaayDataQuery = "SELECT * FROM `upaay` WHERE `token_id` = '$tokenid'";
+				    	$upaayDataQuery = "SELECT * FROM `upaay` WHERE `token` = '$tokenid'";
 				    	$upaayData = mysqli_query($con, $upaayDataQuery);
 				    	$row = mysqli_fetch_array($upaayData);
 				?>
 				<table border="3px" cellpadding="20px" align="center">
-					<tr><td><h3>  Token Id    </h3></td>  <td><h3>  <?php echo $row['token_id'];?>  </h3></td></tr>
+					<tr><td><h3>  Token Id    </h3></td>  <td><h3>  <?php echo $row['token'];?>  </h3></td></tr>
 					<tr><td><h3>  Baithak Id  </h3></td>  <td><h3>  <?php echo $row['baithak_id'];?>  </h3></td></tr>
 					<tr><td><h3>  Samasya     </h3></td>  <td><h3>  <?php echo $row['samasya'];?>  </h3></td></tr>
 					<tr><td><h3>  Status      </h3></td>  <td><h3>  <?php echo $row['Status'];?>  </h3></td></tr>

@@ -43,7 +43,7 @@
                             <pre>
                                 <!-- text inputs:  dijit/form/TextBox -->
                                 <strong>Userid: </strong>           <input type="text" name="userid" placeholder="userid" id="userid"
-                                    data-dojo-type="dijit/form/TextBox"/>      <input type="submit" value="Find Visitor" label="Find Visitor" id="findVisitorButton"
+                                    data-dojo-type="dijit/form/TextBox"/>      <input type="submit" value="Find Visitor" label="Find Visitor" id="findVisitorButton" name="findVisitor" 
                                     data-dojo-type="dijit/form/Button" /><br/>
                                  
                                 <strong>First Name:  </strong>      <input type="text" name="first_name" placeholder="John" id="firstName"
@@ -206,3 +206,22 @@
 
 </body>
 </html>
+
+<?php
+	if (isset($_post['findVisitor'])) {
+		# code...
+		$userid = $_post['userid'];
+		$query = "SELECT * FROM `user_info` WHERE `user_id` = '$userid'";
+		$queryrun = mysqli_query($con, $query);
+		$row = mysqli_fetch_array($queryrun);
+		$selectOccupation = mysqli_query($con, "SELECT `occupation_level_one_name` FROM `occupation_level_one` WHERE `occupation_level_one_id` = (SELECT `occupation_level_one_id` FROM `occupation` WHERE `userid` = '$userid')");
+		$selctQuery = mysqli_fetch_array($selectOccupation);
+		echo "<script rel='javascript'>
+				document.getElementById('userid').label = "+$row['user_id']+";
+				document.getElementById('firstName').label = "+$row['first_name']+";
+				document.getElementById('lastName').label = "+$row['last_name']+";
+				document.getElementById('contactNumber').label = "+$row['mobile_no']+";
+				document.getElementById('occupation').label = "+$row['occupation_level_one_name']+";
+		</script>";
+	}
+?>
