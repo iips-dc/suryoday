@@ -8,13 +8,12 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Suryoday | Baithak</title>
-    
     <!-- Configuration for the absoulte path -->
-     <?php include "../../config_global.php";   ?>
+    <?php include "../../config_global.php";   ?>
     <!-- Core Css -->
     <?php include "../../includes/cssLinks.inc.php";   ?>
-
 </head>
 <body class="claro">
  
@@ -37,7 +36,7 @@
                 <!-- Vertical Left tabs begin -->             
                 <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true" tabPosition="left-h">
                     <!-- Tab for token generation begin -->
-                    <div data-dojo-type="dijit/layout/ContentPane" title="Token Generation" selected="true" id="tokenGeneration">
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Token Generation" id="tokenGeneration" selected="true">
 
                         <!-- Form for Token Geneeration -->
                         <form action="generate_token_submit.php" method="post">
@@ -79,7 +78,7 @@
                     </div> <!-- tokenGeneration Tab ends -->
 
                     <!-- Upay tab begins -->
-                    <div data-dojo-type="dijit/layout/ContentPane" title="Upay">
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Upay" id="upay">
                         <!-- Form for Upay -->
                         <form action="upay.php" method="POST">
                             <pre>
@@ -87,18 +86,18 @@
                                 <strong>Tokenid: </strong>          <input type="text" name="tokenid" placeholder="tokenid" id="tokenid"
                                     data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot Problem!"'/>    
                                  
-                                <strong>Baithakid:  </strong>        <input type="text" name="baithakid" placeholder="0012" id="baithakid"
+                                <strong>Baithakid:  </strong>       <input type="text" name="baithakid" placeholder="0012" id="baithakid"
                                     data-dojo-type="dijit/form/TextBox" required="true" data-dojo-props='missingMessage:"Ooops! You forgot bithakid!"' /> 
             
                                 <strong>Problem: </strong>          <input type="text" name="problem" placeholder="Only Darshan" id="problem"
-                                    data-dojo-type="dijit/form/Textarea" required="true" data-dojo-props='missingMessage:"Ooops! You forgot Problem!"' /> 
+                                    data-dojo-type="dijit/form/SimpleTextarea" rows="2" cols="50" required="true" data-dojo-props='missingMessage:"Ooops! You forgot Problem!"' /> 
                                  <!-- radio buttons:  dijit/form/RadioButton -->
                                 <strong>Status: </strong>           <input type="radio" id="statusSolved" name="status" checked="checked"
                                     data-dojo-type="dijit/form/RadioButton" />  <label for="radio1">Solved</label>  <input type="radio" id="statusUnsolved" name="status"
                                     data-dojo-type="dijit/form/RadioButton" />  <label for="radio2">Unsolved</label>
 
-                                <strong>Solution: </strong>           <input type="text" name="solution" placeholder="Better if done in next month." id="solution"
-                                    data-dojo-type="dijit/form/Textarea" style:"width:50px;" />                                 
+                                <strong>Solution: </strong>         <input type="text" name="solution" placeholder="Better if done in next month." id="solution"
+                                    data-dojo-type="dijit/form/SimpleTextarea" rows="2" cols="50" style:"width:50px;" />                                 
                                 <!-- Drop down list:  dijit/form/FilteringSelect -->
                                 <strong>Assigned To: </strong>      <select name="assignedTo" id="assignedTo" data-dojo-type="dijit/form/FilteringSelect" required="true">
                                     <option value="">Select a member</option>
@@ -108,14 +107,16 @@
                                 </select>
 
                                 <strong>Remark: </strong>           <input type="text" name="upay_remark" placeholder="to be done urgently!" id="upayRemark"
-                                    data-dojo-type="dijit/form/Textarea"/> <br/>                           
+                                    data-dojo-type="dijit/form/SimpleTextarea" rows="2" cols="50" /> <br/>                           
+
                                 <!-- submit button:  dijit/form/Button -->
                                 <center>
-                                <input type="submit" value="Upay Submit" label="Submit" id="upaySubmit"
-                                    data-dojo-type="dijit/form/Button" />
-                                </center>                     
-                             </pre>                          
+                                <button type="submit" value="Upay Submit" label="Submit" id="upaySubmit" onclick="myDialog.show();" 
+                                    data-dojo-type="dijit/form/Button">Submit</button>
+                                </center> 
+                             </pre>                    
                         </form><!-- form for Upay ends -->
+
                     </div>
 
                     <!-- Registration and Updation tab -->
@@ -164,14 +165,13 @@
                                 </select>
 
                                 <strong>Remark: </strong>         <input type="text" name="baithak_remark" placeholder="vip are not coming" id="baithakRemark"
-                                    data-dojo-type="dijit/form/Textarea"/> <br/>               
-                            </pre>   
-                                                     
+                                    data-dojo-type="dijit/form/SimpleTextarea" rows="2" cols="50" /> <br/>               
                                 <!-- submit button:  dijit/form/Button -->
                                 <center>
                                 <input type="submit" name="add" value="Add" label="Add" id="add"
                                     data-dojo-type="dijit/form/Button" />            
-                                </center>              
+                                </center>
+                            </pre>     
                         </form><!-- form for Add Baithak ends -->
                         
                     </div> <!-- Add Baithak Tab ends -->
@@ -194,7 +194,7 @@
     <script>
         require(["dojo/parser", "dijit/MenuBar", "dijit/MenuBarItem", "dijit/PopupMenuBarItem",
     "dijit/DropDownMenu", "dijit/MenuItem", "dijit/layout/TabContainer", "dijit/form/RadioButton", 
-    "dojo/domReady!", "dijit/form/Textarea", "dijit/form/DateTextBox" ]);
+    "dojo/domReady!", "dijit/form/SimpleTextarea", "dijit/form/DateTextBox" ]);
     </script>
     <?php
         } #End of LoggedIn function

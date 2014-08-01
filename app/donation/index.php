@@ -72,10 +72,10 @@
                         </select>
                         
                         <strong>Remark: </strong>           <input type="text" name="remark" placeholder="to be used for xyz!" id="remark"
-                        data-dojo-type="dijit/form/Textarea"/>
+                        data-dojo-type="dijit/form/Textarea" rows="2" cols="50"/>
                         
                         <strong>Details: </strong>          <input type="text" name="details" placeholder="" id="details"
-                        data-dojo-type="dijit/form/Textarea"/>
+                        data-dojo-type="dijit/form/Textarea" rows="2" cols="50"/>
                         <center>
                         <!-- submit button: dijit/form/Button -->
                         <input type="submit" value="Donation Submit" label="Submit" id="donationSubmit"
