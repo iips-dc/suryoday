@@ -66,10 +66,10 @@
                                 <!-- submit button:  dijit/form/Button -->
                                 <center>
                                 <!-- <input type="submit" name="generate_token" value="Generate Token" label="Generate Token" id="generateTokenButton"
-                                    data-dojo-type="dijit/form/Button" /> --> <button id="findVisitorButton" type="submit" name="generate_token" value="Generate Token" label="Generate Token" id="generateTokenButton" formaction="generate_token.php">Generate Token</button> 
+                                    data-dojo-type="dijit/form/Button" /> --> <button id="generateTokenButton" type="submit" name="generate_token" value="Generate Token" label="Generate Token" id="generateTokenButton" formaction="generate_token.php">Generate Token</button> 
             
-                                <input type="submit" name="register" value="Register" label="Register" id="registerButton"
-                                    data-dojo-type="dijit/form/Button" />   
+                                <!-- <input type="submit" name="register" value="Register" label="Register" id="registerButton"
+                                    data-dojo-type="dijit/form/Button" /> -->   <button id="registerButton" type="submit" name="register" value="Register" label="Register" id="registerButton" formaction="register.php">Register</button> 
             
                                 <input type="submit" name="update_information" value="Update Information" label="Update Information" id="updateInformationButton"
                                     data-dojo-type="dijit/form/Button" />   
