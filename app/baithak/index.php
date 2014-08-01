@@ -43,16 +43,17 @@
                             <pre>
                                 <!-- text inputs:  dijit/form/TextBox -->
                                 <strong>Userid: </strong>           <input type="text" name="userid" placeholder="userid" id="userid"
-                                    data-dojo-type="dijit/form/TextBox"/>      <input type="submit" value="Find Visitor" label="Find Visitor" id="findVisitorButton" name="findVisitor" 
-                                    data-dojo-type="dijit/form/Button" /><br/>
+                                    data-dojo-type="dijit/form/TextBox"/>      <!-- <input type="submit" value="Find Visitor" label="Find Visitor" id="findVisitorButton" name="findVisitor" 
+                                    data-dojo-type="dijit/form/Button" formaction="find_visitor.php" onclick="findVisitorFunction()" /> --> <button id="findVisitorButton" type="submit" name="findVisitor" formaction="index.php">Find Visitor</button> 
+                                 <!--  <br/> -->
                                  
                                 <strong>First Name:  </strong>      <input type="text" name="first_name" placeholder="John" id="firstName"
-                                    data-dojo-type="dijit/form/TextBox"/> <br/>
+                                    data-dojo-type="dijit/form/TextBox"/> <br/> 
             
                                 <strong>Last Name: </strong>        <input type="text" name="last_name" placeholder="Smith" id="lastName"
                                     data-dojo-type="dijit/form/TextBox"/> <br/>
             
-                                <strong>Mobile Number: </strong>   <input type="text" name="mobile_number" placeholder="98267594100" id="contactNumber"
+                                <strong>Mobile Number: </strong>    <input type="text" name="mobile_number" placeholder="98267594100" id="contactNumber"
                                     data-dojo-type="dijit/form/TextBox"/> <br/>
             
                                 <strong>Occupation: </strong>       <input type="text" name="occupation" placeholder="Student" id="occupation"
@@ -64,8 +65,8 @@
                                                      
                                 <!-- submit button:  dijit/form/Button -->
                                 <center>
-                                <input type="submit" name="generate_token" value="Generate Token" label="Generate Token" id="generateTokenButton"
-                                    data-dojo-type="dijit/form/Button" />
+                                <!-- <input type="submit" name="generate_token" value="Generate Token" label="Generate Token" id="generateTokenButton"
+                                    data-dojo-type="dijit/form/Button" /> --> <button id="findVisitorButton" type="submit" name="generate_token" value="Generate Token" label="Generate Token" id="generateTokenButton" formaction="generate_token.php">Generate Token</button> 
             
                                 <input type="submit" name="register" value="Register" label="Register" id="registerButton"
                                     data-dojo-type="dijit/form/Button" />   
@@ -195,6 +196,13 @@
         require(["dojo/parser", "dijit/MenuBar", "dijit/MenuBarItem", "dijit/PopupMenuBarItem",
     "dijit/DropDownMenu", "dijit/MenuItem", "dijit/layout/TabContainer", "dijit/form/RadioButton", 
     "dojo/domReady!", "dijit/form/SimpleTextarea", "dijit/form/DateTextBox" ]);
+
+    finction findVisitorFunction(){
+        alert("button clicked!");   
+    }
+
+    document.getElementById("findVisitorButton").formAction="find_visitor.php";
+
     </script>
     <?php
         } #End of LoggedIn function
