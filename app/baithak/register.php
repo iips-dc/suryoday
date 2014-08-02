@@ -37,20 +37,38 @@
         
         if(isset($_POST['register'])){                
             $userid = $_POST['userid'];
-
+             
             #check userid should be blank
             if(strlen($userid) != 0){
             	echo "Oops!! To register new user userid should be blank.";
             }
             //	INSERT INTO `user_info` (`user_id` ,`first_name` ,`last_name` ,`mobile_no` )VALUES ('cc4', 'cc','bb', '22');
-            /*else{
+            else{
+                #fetch all other values
+                $first_name = trim($_POST['first_name']);
+                $last_name = trim($_POST['last_name']);
+                $mobile_number = trim($_POST['mobile_number']);
+                $occuption = trim($_POST['occuption']);
+                $purpose = trim($_POST['purpose']);
+
+                #check all values are not blank
+                
+
             	#code to create new user and then generate its token
 
             	#read last sno to give new userid:
-            	$result = mysqli_query($con, "selece max(sno) from user_info");
-            	$last_sno = mysqli_fetch($result);
-            	echo $last_sno->sno;
-            }*/
+            	$result = mysqli_query($con, "SELECT max(sno) from user_info");
+            	$last_sno = mysqli_fetch_array($result);
+
+                // new sno will be
+                $new_sno = $last_sno + 1;
+
+                #freeing result object
+                $result->close;
+                #insert new user detail in user_info table
+                $result = mysqli_query($con, "INSERT INTO `user_info` (`user_id` ,`first_name` ,`last_name` ,`mobile_no` )VALUES ('cc4', 'cc','bb', '22');")
+
+            }
             /*$result = mysqli_query($con,"SELECT * FROM user_info where user_id = ".$userid);    
             
             //if userid is valid than add a new entry in visit_details table and generate new token which is sno for this table.
@@ -82,11 +100,11 @@
             }
             $result->close;
             #echo "closed";
-            mysqli_close($con);     
+            mysqli_close($con);  */   
             }
             else{
                 echo "There is some problem button is not set. Try again later!!";
-            }*/
+            }
             echo "<br/><a href='./index.php'> Back to previous page </a>";
         ?>
 
