@@ -40,38 +40,38 @@
                  <h3 style="color:#ED440C">Services</h3><hr>
                 <div class="row ">
                     <div class="col-md-3 text-center">
-                        <a href="app/baithak/index.php"><img class="img-responsive img-rounded" src="assests/img/baithak.jpg"></a>
+                        <a href="app/baithak/index.php"><img class="img-responsive img-rounded" src="assests/img/baithak-logo.jpg" width="150" height="15"></a>
                     </div>
                     <div class="col-md-3">
-                        <a href="app/public_relation/index.php"><img class="img-responsive img-rounded" src="assests/img/pr.jpg"></a>
+                        <a href="app/human_resource/index.php"><img class="img-responsive img-rounded" src="assests/img/human_resource-logo.jpg"></a>
                     </div>
                     <div class="col-md-3">
-                         <a href="app/human_resource/index.php"><img class="img-responsive img-rounded" src="assests/img/hr.jpg"></a>
+                    	<a href="app/public_relation/index.php"><img class="img-responsive img-rounded" src="assests/img/personal_relation.jpg"></a>
                     </div>
                     <div class="col-md-3">
-                        <a href="todo"><img class="img-responsive img-rounded" src="assests/img/todo.png"></a>
+                        <a href="#"><img class="img-responsive img-rounded" src="assests/img/donation-logo.jpg" width="150"></a>
                     </div>
                 </div>
                 <br><br><br><br><br><br><br><br><br>
                 <div class="row ">
                     <div class="col-md-3 text-center">
-                        <a href="#"><img class="img-responsive img-rounded" src="assests/img/projects.jpg"></a>
+                        <a href="#"><img class="img-responsive img-rounded" src="assests/img/reports.jpg" width="120"></a>
                     </div>
                     <div class="col-md-3">
-                        <a href="#"><img class="img-responsive img-rounded" src="assests/img/projects.jpg"></a>
+                        <a href="#"><img class="img-responsive img-rounded" src="assests/img/projects.jpg" width="130"></a>
                     </div>
                     <div class="col-md-3">
-                        <a href="#"><img class="img-responsive img-rounded" src="assests/img/projects.jpg"></a>
+
                     </div>
                     <div class="col-md-3">
-                        <a href="#"><img class="img-responsive img-rounded" src="assests/img/projects.jpg"></a>
+
                     </div>
                 </div>
                 <!-- .row --> 
             </div> 
         
             <!-- Bottom Region of Layout -->
-            <div dojoType="dijit.layout.ContentPane" region="bottom" splitter="true"> 
+            <div dojoType="dijit.layout.ContentPane" region="bottom"> 
                 &copy; Suryoday Trust . <span style="float:right">Powered By <a  href="#">Developement Center</a> </span>
             </div>
         </div>
