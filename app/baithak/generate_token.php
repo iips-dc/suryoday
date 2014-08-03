@@ -36,9 +36,8 @@
         include '../../includes/login/connect.inc.php';
         
         if(isset($_POST['generate_token'])){                
-            echo $userid = $_POST['userid'];
-
-            $result = mysqli_query($con,"SELECT * FROM user_info where user_id = '".$userid."'");               
+            $userid = $_POST['userid'];
+            $result = mysqli_query($con,"SELECT * FROM user_info where user_id = ".$userid);    
             echo gettype( mysqli_num_rows($result));
             echo mysqli_num_rows($result);
             //if userid is valid than add a new entry in visit_details table and generate new token which is sno for this table.
@@ -51,13 +50,13 @@
                 #insertion in visit_detail table                
                 $result->close;        //free above result set
                 mysqli_query($con,"INSERT INTO visit_details(user_id, baithak_id, purpose_id)
-                VALUES ('".$userid."', 'b1', 1)") or die("Unabel to add visitor <br/> Error : ".mysqli_error($con));
+                VALUES ('".$userid."', 'bi1', 1)") or die("Unabel to add visitor <br/> Error : ".mysqli_error($con));
                 echo "Visitor added!<br/>";
     
                 #fetching new/last added sno and giving it as token to this particular bhkat.
                 $result = mysqli_query($con,"SELECT sno FROM visit_details ORDER BY sno DESC LIMIT 1");
                 $visitor = $result->fetch_object();
-                echo "Generated Token number is <h3>".$visitor->sno."</h3><br/>";                
+                echo "Generated Token number is <b>".$visitor->sno."</b><br/>";                
                 //echo "<script> alert('Generated Token Number is '".$visitor->sno."</script>";                
                 }                
                 else{
