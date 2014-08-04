@@ -71,8 +71,8 @@
                                 <!-- <input type="submit" name="register" value="Register" label="Register" id="registerButton"
                                     data-dojo-type="dijit/form/Button" /> -->   <button id="registerButton" type="submit" name="register" value="Register" label="Register" id="registerButton" formaction="register.php">Register</button> 
             
-                                <input type="submit" name="update_information" value="Update Information" label="Update Information" id="updateInformationButton"
-                                    data-dojo-type="dijit/form/Button" />   
+                                <!-- <input type="submit" name="update_information" value="Update Information" label="Update Information" id="updateInformationButton"
+                                    data-dojo-type="dijit/form/Button" />   --> <button id="updateButton" type="submit" name="update" value="Update" label="Update" id="updateInformationButton" formaction="baithak_update_info.php">Register</button> 
                                 </center>              
                         </form><!-- form for tokenGeneration ends -->
                         

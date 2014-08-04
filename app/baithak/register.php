@@ -48,59 +48,58 @@
                 $first_name = trim($_POST['first_name']);
                 $last_name = trim($_POST['last_name']);
                 $mobile_number = trim($_POST['mobile_number']);
-                $occuption = trim($_POST['occuption']);
+                $occupation = trim($_POST['occupation']);
                 $purpose = trim($_POST['purpose']);
 
                 #check all values are not blank
-                
+                try{
+                	if((strlen($first_name) == 0) or (strlen($last_name) == 0) or (strlen($mobile_number)==0) or strlen($occupation)==0 or (strlen($purpose)==0)){
+                		throw new Exception("Fields were blank", 1);                		               		
+                	}
+                	#code to create new user and then generate its token
+                	
+            		#read last sno to give new userid:
+            		$result = mysqli_query($con, "SELECT MAX( sno ) as sno FROM `user_info`;");
+            		$row = mysqli_fetch_array($result);
+            		$last_sno = $row['sno'];
+					#freeing result object
+                	$result->close;
+                	//new sno will be
+                	$new_sno = (int)$last_sno + 1;
 
-            	#code to create new user and then generate its token
+					#new userid 
+					$new_userid = substr($first_name, 0, 2).$new_sno ;
+					echo "New user added with userid: <b>$new_userid</b> <br/>";
+                	
+                	#insert new user detail in user_info table
+                	$result = mysqli_query($con, "INSERT INTO `user_info` (`user_id` ,`first_name` ,`last_name` ,`mobile_no` )
+                		VALUES ('".$new_userid."', '".$first_name."','".$last_name."', '".$mobile_number."');") 
+                		or die("Unabel to add new user in user_info <br/> Error : ".mysqli_error($con));
+                	$result->close;        //free above result set
 
-            	#read last sno to give new userid:
-            	$result = mysqli_query($con, "SELECT max(sno) from user_info");
-            	$last_sno = mysqli_fetch_array($result);
+                	#Put new user in temporry_user_info tabel so that he will be tracked for getting full information.
+                	$result = mysqli_query($con, "INSERT INTO `temporary_user_info` (`userid` )
+                		VALUES ('".$new_userid."');") 
+                		or die("Unabel to add new user in temporaty_user_info <br/> Error : ".mysqli_error($con));
 
-                // new sno will be
-                $new_sno = $last_sno + 1;
+                }catch (Exception $e) {
+    				echo 'Caught exception: ',  $e->getMessage(), "\n";
+				}
 
-                #freeing result object
-                $result->close;
-                #insert new user detail in user_info table
-                $result = mysqli_query($con, "INSERT INTO `user_info` (`user_id` ,`first_name` ,`last_name` ,`mobile_no` )VALUES ('cc4', 'cc','bb', '22');")
-
-            }
-            /*$result = mysqli_query($con,"SELECT * FROM user_info where user_id = ".$userid);    
-            
-            //if userid is valid than add a new entry in visit_details table and generate new token which is sno for this table.
-            if(mysqli_num_rows($result) == 1) {       
-                $baithak = mysqli_fetch_array($result);
-                //checking all values are mathing or not except occuption ais t is in another table         
-                if(($baithak['first_name'] == $_POST['first_name']) && ($baithak['last_name'] == $_POST['last_name']) 
-                    && ($baithak['mobile_no'] == $_POST['mobile_number'])){
-                #check for occupation is yet to be done.
-                #insertion in visit_detail table                
-                $result->close;        //free above result set
+				#puting detail in vesitor_details table and generating token
+				
                 mysqli_query($con,"INSERT INTO visit_details(user_id, baithak_id, purpose_id)
-                VALUES ('".$userid."', 'bi1', 1)") or die("Unabel to add visitor <br/> Error : ".mysqli_error($con));
+                VALUES ('".$new_userid."', 'bi1', 1)") or die("Unabel to add visitor <br/> Error : ".mysqli_error($con));
                 echo "Visitor added!<br/>";
     
                 #fetching new/last added sno and giving it as token to this particular bhkat.
                 $result = mysqli_query($con,"SELECT sno FROM visit_details ORDER BY sno DESC LIMIT 1");
                 $visitor = $result->fetch_object();
-                echo "Generated Token number is <h3>".$visitor->sno."</h3><br/>";                
-                //echo "<script> alert('Generated Token Number is '".$visitor->sno."</script>";                
-                }                
-                else{
-                    echo $_POST['first_name'].", ".$_POST['last_name'].", ".$_POST['mobile_number']." didn't match with database data.<br/>";
-                }
+                echo "Generated Token number is <b>".$visitor->sno."</b><br/>";                  
+            	$result->close;
+            	$con->close;
             }
-            else{
-                #echo "data is not one row";
-                echo "Oops!! there is some problem, may you have entered wrong userid. Please Try again!!.";
-            }
-            $result->close;
-            #echo "closed";
-            mysqli_close($con);  */   
+            
             }
             else{
                 echo "There is some problem button is not set. Try again later!!";
