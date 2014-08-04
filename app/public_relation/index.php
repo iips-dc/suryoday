@@ -37,18 +37,19 @@
                     <!-- Followers Tab begins -->                    
                     <div data-dojo-type="dijit/layout/ContentPane" title="Followers" selected="true" id="followers">
                         <div class="row">
+                        <form class="search" action="search.php" method="post">
                             <div class="col-md-6 text-center">
                              <!-- search box begins-->
                             <div id="searchbox" style="display: center">
                                 <h3>Quick search</h3>
-                                <form class="search" action="search.php" method="get">
-                                    <input type="text" name="q" size="18" />
-                                    <input type="submit" value="Go" />
+                                
+                                    <input type="text" name="search" placeholder="Ram" size="18" />
+                                    <input type="submit" value="Go" name="searching"/>
                                     <input type="hidden" name="check_keywords" value="yes" />
                                     <input type="hidden" name="area" value="default" />
-                                </form>
+                                
                                 <p class="searchtip" style="font-size: 90%">
-                                    Enter search terms or a follower name.
+                                    Enter a follower name.
                                 </p>
                             </div>                                                
                             </div><!-- search box ends -->
@@ -56,19 +57,25 @@
                         <!-- filter box begins-->                        
                             <div id="searchbox" class="col-md-6 text-center">
                                 <h3>Search By</h3>
-                                <form class="search" action="search.php" method="get">
+                                
                                     <!-- Drop down list:  dijit/form/FilteringSelect -->
                                     <select name="receivedBy" id="receivedBy" data-dojo-type="dijit/form/FilteringSelect">
-                                        <option value="">None</option>
-                                        <option value="Occupation">Occupation</option>
-                                        <option value="xyz">Age</option>
-                                        <option value="pqr">Adress City</option>
+                                        <option value="-1">None</option>
+                                        <option value="User_Id">User id</option>
+                                        <option value="Age">Age</option>
+                                        <option value="City">Adress City</option>
                                     </select>
-                                </form>
+                               	
                                 <p class="searchtip" style="font-size: 90%">
                                     Choose the one with which you want to search.
                                 </p>
-                            </div>                        
+                                
+                                <input type="text" name="search_term" placeholder="Indore" size="18" />
+                                <p class="searchtip" style="font-size: 90%">
+                                    Enter the value with which you want to search.
+                                </p>
+                            </div>
+                             </form>                        
                         <!-- filter box ends -->
                         </div>
 
@@ -78,7 +85,7 @@
                         <link rel="stylesheet" type="text/css" href="../../assests/js/dojo-1.9.3/dojox/grid/enhanced/resources/EnhancedGrid_rtl.css">
                         <script src="../../assests/js/grid.js"></script>
                         <div id="gridDiv">
-                            OOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                           
                         </div>
 
                     </div> <!-- Followers Tab ends -->
