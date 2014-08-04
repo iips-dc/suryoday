@@ -2,28 +2,24 @@
 include '../../includes/login/core.inc.php';
 include '../../includes/login/connect.inc.php';
 require_once'../../lib/dompdf/dompdf_config.inc.php';
+//Configuration for the absoulte path
+include "../../config_global.php";   
+// Core Css
+#include "../../includes/cssLinks.inc.php";
+?>
 
-    $host = 'localhost';
-    $user = 'root';
-    $pass = 'root';
-    $db = 'suryoday_db';
-    $con = mysqli_connect($host,$user,$pass,$db);
-    if(mysqli_connect_errno($con)){
-        echo 'Failed to connect to the database : '.mysqli_connect_error();
-        die();
-    }
-    
-echo "before";
+<?php 
+
+if(loggedIn()){ #This function is in /includes/login/core.inc.pho for verfying user session
 //Select donation form userinfo and donation table for finding the donation given by the user.
 $sqldonation="SELECT * from user_info inner join donation on user_info.user_id =donation.user_id";
 $donationresult=mysqli_query($con , $sqldonation) or die('Error'.mysqli_error($con));
-#$donationarray=mysqli_fetch_array($donationresult);
-
-echo "after";               
+              
 
   $html =
     '<html><head>
      <style>
+     
      .center{
        text-align:center;
      }
@@ -71,6 +67,11 @@ $dompdf->load_html($html);
 
 $dompdf->render();
 $dompdf->stream("Donation.pdf");
+
+}
+else{
+        include '../../includes/login/login_form.inc.php' ;
+    }
 
 ?>
 
