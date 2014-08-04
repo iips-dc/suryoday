@@ -41,7 +41,7 @@ $donationresult=mysqli_query($con , $sqldonation) or die('Error'.mysqli_error($c
 
 
         $html.='<table width="100%" border="1px">'.
-        '<tr><th>Date</th><th>Name of Donour</th><th>Address</th><th>Contact No.</th><th>Donation</th><th>Quantity</th></tr>';
+        '<tr><th>Date</th><th>Name of Donor</th><th>Address</th><th>Contact No.</th><th>Donation</th><th>Quantity</th></tr>';
         while($donationrow = mysqli_fetch_array($donationresult)){
             $fname=$donationrow['first_name'];
             $mname=$donationrow['middle_name'];

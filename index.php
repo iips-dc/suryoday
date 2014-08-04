@@ -49,7 +49,7 @@
                     	<a href="app/public_relation/index.php"><img class="img-responsive img-rounded" src="assests/img/personal_relation.jpg"></a>
                     </div>
                     <div class="col-md-3">
-                        <a href="#"><img class="img-responsive img-rounded" src="assests/img/donation-logo.jpg" width="150"></a>
+                        <a href="app/donation/index.php"><img class="img-responsive img-rounded" src="assests/img/donation-logo.jpg" width="150"></a>
                     </div>
                 </div>
                 <br><br><br><br><br><br><br><br><br>
