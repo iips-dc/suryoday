@@ -72,7 +72,7 @@
                                     data-dojo-type="dijit/form/Button" /> -->   <button id="registerButton" type="submit" name="register" value="Register" label="Register" id="registerButton" formaction="register.php">Register</button> 
             
                                 <!-- <input type="submit" name="update_information" value="Update Information" label="Update Information" id="updateInformationButton"
-                                    data-dojo-type="dijit/form/Button" />   --> <button id="updateButton" type="submit" name="update" value="Update" label="Update" id="updateInformationButton" formaction="baithak_update_info.php">Register</button> 
+                                    data-dojo-type="dijit/form/Button" />   --> <button id="updateButton" type="submit" name="update" value="Update" label="Update" id="updateInformationButton" formaction="baithak_update_info.php">Update</button> 
                                 </center>              
                         </form><!-- form for tokenGeneration ends -->
                         
@@ -126,13 +126,42 @@
                         <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true">
                             <div data-dojo-type="dijit/layout/ContentPane" title="Register" selected="true">
                                 <h3> List of Bhakts yet to Register:</h3>
-                                <form action="register.php" method="get">
-                                    <input type="submit" value="registrationForms" label="Generate" id="registerationForms"
-                                    data-dojo-type="dijit/form/Button" />
+                                <?php
+                                #code to get list of all newly added users:                                
+                                $result = mysqli_query($con,"SELECT * FROM temporary_user_info "); 
+                                if(mysqli_num_rows($result) > 0) {  
+                                    ?>
+                                    <table style="width:500px"> <tr><th> Sno. </th><th> Userid </th> <th> Generate form </th><th>Fill Information</th></tr>
+                                    <?php                           
+                                    while ($new_user = $result->fetch_object()){
+                                        echo "<tr>
+                                        <td> $new_user->sno </td>
+                                        <td> $new_user->userid </td>"
+                                        ?>
+                                        <form action="" method="post">
+                                        <td> <button type= "submit" name="registeration_form" value="<?php $new_user->userid?>" id="registerationForm" formaction="baithak_registration_form.php">Print Form</button></td>
+                                        <td> <button type= "submit" name="registeration_form" value="<?php $new_user->userid?>" id="fillForm" formaction="register_form.php">Fill</button></td>
+                                        </form> 
+                                        </tr>
+                                        <?php                                    
+                                    }
+                                    echo "</table>";
+                                }
+                                else{
+                                ?>
+                                    <p>No new user is such whoes details are unfilled.</p>
+                                <?php
+                                }                                                  
+                                $result->close;
+                                $con->close;
+                                ?>
+                                <form action="" method="post">
+                                    <!-- <input type="submit" value="registrationForms" label="Generate" id="registerationForms"
+                                    data-dojo-type="dijit/form/Button" /> --> <!-- <button type="submit" name="baithak_registration_form_list" value="registrationForms" label="Generate" id="registerationForms" formaction="baithak_registration_form_list.php">Update</button> --> 
                                 </form>
                             </div>
                             <div data-dojo-type="dijit/layout/ContentPane" title="Update">
-                                <h3> List of Bhakts need to update information:</h3>
+                                <h3> List of Bhakts need to update information:</h3>                            
                                 <form action="updateOccupation.php" method="get">
                                     <input type="submit" value="generateForms" label="Generate" id="generateForms"
                                     data-dojo-type="dijit/form/Button" />
