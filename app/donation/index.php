@@ -174,14 +174,19 @@
                         
                     </div> <!-- project donation Tab ends -->
 
-                    <!-- Trust donation tab begins -->
-                    <div data-dojo-type="dijit/layout/ContentPane" title="Trust" id='trustDonation'>
-                        
-                    </div><!-- Trust donation tab ends -->
-                    <!-- Tab for offrings begin -->
-                    <div data-dojo-type="dijit/layout/ContentPane" title="Offring" selected="true" id="offring">
+                    
+                    <!-- Tab for report begins -->
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Report" selected="true" id="offring">
+                        <center>
+                        <!-- submit button: dijit/form/Button -->
 
-                        
+                            <button data-dojo-type="dijit.form.Button" type="button" id="items">Generate Report
+                            <script type="dojo/connect" data-dojo-event="onClick">
+                                window.location = "donation.php";
+                            </script>
+                            </button>
+
+                        </center>
                     </div> <!-- offrings Tab ends -->
 
 
