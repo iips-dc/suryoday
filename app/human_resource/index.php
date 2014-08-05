@@ -97,6 +97,20 @@
                         <pre> Coming Soon!!!</pre>
                     </div> <!-- Shout Box tab ends. -->
 
+                    <!-- Employee List tab -->
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Employee List">
+                         <center>
+            
+
+                            <button data-dojo-type="dijit.form.Button" type="button" id="items">Employee List
+                            <script type="dojo/connect" data-dojo-event="onClick">
+                                window.location = "employee_list_report.php";
+                            </script>
+                            </button>
+
+                        </center>
+                    </div> <!-- Employee List tab ends. -->
+
                 </div><!-- Vertical Left tabs end -->
             </div> 
         
