@@ -38,6 +38,31 @@
                 <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true" tabPosition="left-h">
 <?php
 
+function check_baithak($baithak_id,$user_id){
+	//connecting to the database
+	$host = 'localhost';
+	$user = 'root';
+	$pass = 'root';
+	$db = 'suryoday_db';
+	$con = mysqli_connect($host,$user,$pass,$db);
+	if(mysqli_connect_errno($con)){
+		echo 'Failed to connect to the database : '.mysqli_connect_error();
+		die();
+	}
+	//connection made
+	
+	$query = "SELECT * FROM `visit_details` WHERE `user_id` = '".$user_id."' AND `baithak_id` = '".$user_id."' ";	
+	$query_run = mysqli_query($con , $query);
+	if($query_run){
+		return True;
+		}
+	else{
+		return False;
+		}
+	mysqli_close($con);
+	}
+
+
 $username = $_SESSION['username'];//session id
 /* We have to take token_id .due to absence of token genration we will insert */
 if(isset($_POST['trustDonationSubmit'])){//When submit button is clicked
@@ -47,6 +72,7 @@ if(isset($_POST['trustDonationSubmit'])){//When submit button is clicked
 		$query_run = mysqli_query($con , $query);
 		if(mysqli_num_rows($query_run) == 0){
 			echo 'Userid doesnt exists';
+			echo '<br><a href="index.php">Back to donations</a>';
 		}
 			else{
 	//checks if imp fields are not empty
@@ -178,7 +204,7 @@ mysqli_close($con);
 </div>       
             <!-- Bottom Region of Layout -->
             <div dojoType="dijit.layout.ContentPane" region="bottom" splitter="true"> 
-                &copy; Suryoday Trust . <span style="float:right">Powered By <a  href="#">Developement Center</a> <span>
+                &copy; Suryoday Trust . <span style="float:right">Powered By <a  href="#">Developement Center</a> </span>
             </div>
         </div>
             <!-- end of Border Layout Container -->   
