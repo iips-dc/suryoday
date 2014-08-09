@@ -68,14 +68,14 @@
 					<tr><td><h3>  Remark      </h3></td>  <td><h3>  <?php echo $row['remark'];?>  </h3></td></tr>
 				</table>
 					
-					<form action="index.php" method="post">
+					<form action="index#upay.php" method="post">
                         <input type="submit" value="upayRedirect" label="Next Entry" id="upayRedirect" data-dojo-type="dijit/form/Button" />
                     </form>
 				<?php
 				    }
 				    else {
 				    	echo "<h3 text-align='center'>Invalid Token Id or Baithak Id</h3>";
-				    	echo "<form action='index.php' method='post'>
+				    	echo "<form action='index.php#upay' method='post'>
                         		<input type='submit' value='upayRedirect' label='Retry' id='upayRedirect' data-dojo-type='dijit/form/Button' />
                     		</form>";
 				    }
