@@ -16,7 +16,7 @@
     <?php include "../../includes/cssLinks.inc.php";   ?>
 </head>
 <body class="claro">
- 
+
 <?php 
     if(loggedIn()){ #This function is in /includes/login/core.inc.pho for verfying user session
 ?>
@@ -34,7 +34,7 @@
              <div dojoType="dijit.layout.ContentPane" id="content" region="center" splitter="true"> 
 
                 <!-- Vertical Left tabs begin -->             
-                <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true" tabPosition="left-h">
+                <div data-dojo-type="dijit/layout/TabContainer" id="tabContainer" data-dojo-props="region:'center', tabStrip:true" tabPosition="left-h">
                     <!-- Tab for token generation begin -->
                     <div data-dojo-type="dijit/layout/ContentPane" title="Token Generation" id="tokenGeneration" selected="true">
 
@@ -121,7 +121,7 @@
                     </div>
 
                     <!-- Registration and Updation tab -->
-                    <div data-dojo-type="dijit/layout/ContentPane" title="Forms">
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Forms" id="forms">
                         <!-- Inner Tabs for Registration and Updataion sepatrely begins-->
                         <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true">
                             <div data-dojo-type="dijit/layout/ContentPane" title="Register" selected="true">
@@ -220,11 +220,31 @@
     <?php include("../../includes/jsLinks.inc.php"); ?> 
     <?php include("../../includes/dojo_widgets.inc.php"); ?>
 
+
     <!-- Script for dynamic loading of pages in center region -->
-    <script>
-        require(["dojo/parser", "dijit/MenuBar", "dijit/MenuBarItem", "dijit/PopupMenuBarItem",
+<script>
+
+	require(["dojo/parser", "dijit/MenuBar", "dijit/MenuBarItem", "dijit/PopupMenuBarItem",
     "dijit/DropDownMenu", "dijit/MenuItem", "dijit/layout/TabContainer", "dijit/form/RadioButton", 
     "dojo/domReady!", "dijit/form/SimpleTextarea", "dijit/form/DateTextBox" ]);
+
+	//code to open page with desired tab selected by default:
+        dojo.ready(function() {
+		    if (location.hash == '#upay') {
+		      dijit.byId('tabContainer').selectChild(dijit.byId('upay'));
+		    }	
+		    else if (location.hash == '#forms') {
+		      dijit.byId('tabContainer').selectChild(dijit.byId('forms'));
+		    }		   
+		 });
+
+
+	
+</script>
+
+
+    <!-- code to make find visitor work -->
+    <script>             
 
     finction findVisitorFunction(){
         alert("button clicked!");   
