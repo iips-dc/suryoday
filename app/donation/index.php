@@ -38,13 +38,17 @@
                 <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true" tabPosition="left-h">
                     
                     <!-- Tab for project donation begin -->
-                    <div data-dojo-type="dijit/layout/ContentPane" title="Project" selected="true" id="projectDonation">
-                        <!-- Form for Donation begins --><form action="donation_project.php" method="post">
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Donate" selected="true" id="Donation">
+                        <!-- Form for Donation begins --><form action="donate.php" method="post">
                         <pre>
                         <!-- text inputs: dijit/form/TextBox -->
                         <strong>User Id: </strong>          <input type="text" name="userid" placeholder="userid" id="userid" data-dojo-type="dijit/form/TextBox" required data-dojo-props='missingMessage:"Ooops! You forgot userid"'/>
                         
                         <strong>Baithak Id: </strong>       <input type="text" name="baithakid" placeholder="baithakid" id="baithakid" data-dojo-type="dijit/form/TextBox" />
+                        
+                        <strong>For project: </strong>      <input type="radio" id="yes" value="yes" name="for_project" checked="checked"
+                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio1">Yes</label> <input type="radio" id="no" value="no" name="for_project"
+                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio2">No</label>
                         
                         <strong>Project Name: </strong>     <select name="projectName" id="projectName" data-dojo-type="dijit/form/FilteringSelect" required data-dojo-props='missingMessage:"Ooops! You forgot project name"'>
                         <option value="-1">Select a project</option>
@@ -58,7 +62,7 @@
 						?>
                         </select>
                         <!-- radio buttons: dijit/form/RadioButton -->                                            
-                         <strong>Type: </strong>             <input type="radio" id="typeKind" value="Kind" name="donationType" checked="checked"
+                        <strong>Type: </strong>             <input type="radio" id="typeKind" value="Kind" name="donationType" checked="checked"
                         data-dojo-type="dijit/form/RadioButton" /> <label for="radio1">Kind</label> <input type="radio" id="typeCash" value="Cash" name="donationType"
                         data-dojo-type="dijit/form/RadioButton" /> <label for="radio2">Cash</label>
                         
@@ -104,78 +108,14 @@
                         data-dojo-type="dijit/form/Textarea"/>
                         <center>
                         <!-- submit button: dijit/form/Button -->
-                        <input type="submit" value="Donation Submit" label="Submit" id="projectDonationSubmit" name="projectDonationSubmit"
+                        <input type="submit" value="Donation Submit" label="Submit" id="DonationSubmit" name="DonationSubmit"
                         data-dojo-type="dijit/form/Button" />
                         </center>
                         </pre>
                         </form> <!-- Donation Form ends -->
                         
-                    </div> <!-- project donation Tab ends -->
+                    </div> <!--donation Tab ends -->
 
-                    <!-- Trust donation tab begins -->
-                    <div data-dojo-type="dijit/layout/ContentPane" title="Trust" id='trustDonation'>
-                    <!-- Form for Donation for trust begins -->
-                        <form action="donation_trust.php" method="post">
-                        <pre>
-                        <!-- text inputs: dijit/form/TextBox -->
-                        <strong>User Id: </strong>          <input type="text" name="userid" placeholder="userid" id="userid" data-dojo-type="dijit/form/TextBox" required data-dojo-props='missingMessage:"Ooops! You forgot userid"'/>
-                        
-                        <strong>Baithak Id: </strong>       <input type="text" name="baithakid" placeholder="baithakid" id="baithakid" data-dojo-type="dijit/form/TextBox" />
-                        <!-- radio buttons: dijit/form/RadioButton -->                                            
-                        <strong>Type: </strong>             <input type="radio" id="typeKind" value="Kind" name="donationType" checked="checked"
-                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio1">Kind</label> <input type="radio" id="typeCash" value="Cash" name="donationType"
-                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio2">Cash</label>
-                        
-                        <strong>Kind of Cash: </strong>     <input type="radio" id="typeCheque" value="Cheque" name="cashType" checked="checked"
-                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio1">Cheque</label> <input type="radio" id="typeDD" value="DD" name="cashType"
-                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio2">DD</label> <input type="radio" id="typeMoney" value="Money" name="cashType"
-                        data-dojo-type="dijit/form/RadioButton" /> <label for="radio3">Cash</label>
-                        
-                        <strong>DD/Cheque Number: </strong> <input type="text" name="ddChequeNumber" placeholder="45203965" id="ddCheckNumber"
-                        data-dojo-type="dijit/form/TextBox"  />
-                        
-                        <strong>Amount </strong>            <input type="text" name="amount" placeholder="9000" id="amount"
-                        data-dojo-type="dijit/form/TextBox" /> Rs.
-                        
-                        <strong>PAN Number: </strong>       <input type="text" name="panNumber" placeholder="45203965" id="panNumber"
-                        data-dojo-type="dijit/form/TextBox" />
-                        
-                        <strong>Value: </strong>            <input type="text" name="kindvalue" placeholder="Rice" id="kindValue"
-                        data-dojo-type="dijit/form/TextBox"/>
-                        
-                        <strong>Quantity: </strong>         <input type="text" name="kindquantity" placeholder="45203965" id="kindQuantity"
-                        data-dojo-type="dijit/form/TextBox"/>
-                        <!-- Drop down list: dijit/form/FilteringSelect -->
-                        <strong>Received By: </strong>      <select name="receivedBy" id="receivedBy" data-dojo-type="dijit/form/FilteringSelect" required data-dojo-props='missingMessage:"Ooops! You forgot Recieved by"'>
-                        <option value="-1">Select a member</option>
-                        <?php
-							$query = "SELECT user_info.first_name ,user_info.last_name,employee_details.user_id FROM user_info JOIN employee_details ON user_info.user_id=employee_details.user_id";
-							$result = mysqli_query($con,$query);
-							while ($row = mysqli_fetch_array($result)){
-   								echo '<option value="'.$row["user_id"].'"> '.$row["user_id"]." ".$row["first_name"]." ".$row['last_name'].'</options>';
-							}
-							?>
-                        </select>
-                        
-                        <strong>Remark: </strong>           <input type="text" name="remark" placeholder="special remarks" id="remark"
-                        data-dojo-type="dijit/form/Textarea"/>
-                        
-                        <strong>Usage Details: </strong>    <input type="text" name="useDetails" placeholder="to be used for xyz!" id="remark"
-                        data-dojo-type="dijit/form/Textarea"/>
-                        
-                        <strong>Details: </strong>          <input type="text" name="details" placeholder="donation details" id="details"
-                        data-dojo-type="dijit/form/Textarea"/>
-                        <center>
-                        <!-- submit button: dijit/form/Button -->
-                        <input type="submit" value="Donation Submit" label="Submit" id="trustDonationSubmit" name="trustDonationSubmit"
-                        data-dojo-type="dijit/form/Button" />
-                        </center>
-                        </pre>
-                        </form> <!-- Donation Form ends -->
-                        
-                    </div> <!-- project donation Tab ends -->
-
-                    
                     <!-- Tab for report begins -->
                     <div data-dojo-type="dijit/layout/ContentPane" title="Report" selected="true" id="offring">
                         <center>
