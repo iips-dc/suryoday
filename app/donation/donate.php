@@ -111,8 +111,10 @@ if(isset($_POST['DonationSubmit'])){//When submit button is clicked
 								$res = mysqli_query($con,"SELECT MAX(donation_id) FROM donation");
 								$row1 = mysqli_fetch_row($res);
 								$max_donation_id = $row1[0];
+								if(!empty($_POST['baithakid'])){
 								$baithak = $_POST['baithakid'];
 								check_baithak($baithak,$user_id,$max_donation_id);
+								}
 								$query = "INSERT INTO `donation_kind_detail`(`donation_id`, `kind_value`, `quantity`) VALUES ('$max_donation_id','$value','$quantity')";
 								if($query_run = mysqli_query($con,$query)){
 									echo "Successful";
@@ -145,9 +147,11 @@ if(isset($_POST['DonationSubmit'])){//When submit button is clicked
 									$res = mysqli_query($con,"SELECT MAX(donation_id) FROM donation");
 									$row1 = mysqli_fetch_row($res);
 									$max_donation_id = $row1[0];
-									$baithak = $_POST['baithakid'];
-									check_baithak($baithak,$user_id,$max_donation_id);
-									$query = "INSERT INTO `donation_cash_detail`(`donation_id`, `mode_type`, `mode_no`, `amount`) VALUES ('$max_donation_id','$mode','$mode_no','$amount')";
+									if(!empty($_POST['baithakid'])){
+								$baithak = $_POST['baithakid'];
+								check_baithak($baithak,$user_id,$max_donation_id);
+								}
+								$query = "INSERT INTO `donation_cash_detail`(`donation_id`, `mode_type`, `mode_no`, `amount`) VALUES ('$max_donation_id','$mode','$mode_no','$amount')";
 									if($query_run = mysqli_query($con,$query)){
 										echo "Successful";
 										echo '<br><a href="index.php">Back to donations</a>';
@@ -178,8 +182,10 @@ if(isset($_POST['DonationSubmit'])){//When submit button is clicked
 									$res = mysqli_query($con,"SELECT MAX(donation_id) FROM donation");
 									$row1 = mysqli_fetch_row($res);
 									$max_donation_id = $row1[0];
-									$baithak = $_POST['baithakid'];
-									check_baithak($baithak,$user_id,$max_donation_id);
+									if(!empty($_POST['baithakid'])){
+								$baithak = $_POST['baithakid'];
+								check_baithak($baithak,$user_id,$max_donation_id);
+								}
 									$query = "INSERT INTO `donation_cash_detail`(`donation_id`, `mode_type`, `mode_no`, `amount`) VALUES ('$max_donation_id','$mode','','$amount')";
 									if($query_run = mysqli_query($con,$query)){
 										echo "Successful";

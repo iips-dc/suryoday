@@ -14,6 +14,18 @@
      <?php include "../../config_global.php";   ?>
     <!-- Core Css -->
     <?php include "../../includes/cssLinks.inc.php";   ?>
+    <style>
+    #filter {
+    	background-color: #EFEFEF;
+    	width: 280px;
+    	padding-left: 10px;
+    	margin: 5px 5px 0 5px;
+    	/*border: 1px solid #808080;*/
+    }
+    #filter_container {
+    	border-right: 3px solid #808080;
+    }
+    </style>
 
 </head>
 <body class="claro">
@@ -31,120 +43,73 @@
 
             <!-- Center Region of layout -->
              <div dojoType="dijit.layout.ContentPane" id="content" region="center" splitter="true"> 
-
-                <!-- Vertical Left tabs begin -->             
-                <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true" tabPosition="left-h">
-                    <!-- Followers Tab begins -->                    
-                    <div data-dojo-type="dijit/layout/ContentPane" title="Followers" selected="true" id="followers">
-                        <div class="row">
-                        <form class="search" action="search.php" method="post">
-                            <div class="col-md-6 text-center">
-                             <!-- search box begins-->
-                            <div id="searchbox" style="display: center">
-                                <h3>Quick search</h3>
-                                
-                                    <input type="text" name="search" placeholder="Ram" size="18" />
-                                    <input type="submit" value="Go" name="searching"/>
-                                    <input type="hidden" name="check_keywords" value="yes" />
-                                    <input type="hidden" name="area" value="default" />
-                                
-                                <p class="searchtip" style="font-size: 90%">
-                                    Enter a follower name.
-                                </p>
-                            </div>                                                
-                            </div><!-- search box ends -->
-                        
-                        <!-- filter box begins-->                        
-                            <div id="searchbox" class="col-md-6 text-center">
-                                <h3>Search By</h3>
-                                
-                                    <!-- Drop down list:  dijit/form/FilteringSelect -->
-                                    <select name="receivedBy" id="receivedBy" data-dojo-type="dijit/form/FilteringSelect">
-                                        <option value="-1">None</option>
-                                        <option value="User_Id">User id</option>
-                                        <option value="Age">Age</option>
-                                        <option value="City">Adress City</option>
-                                    </select>
-                               	
-                                <p class="searchtip" style="font-size: 90%">
-                                    Choose the one with which you want to search.
-                                </p>
-                                
-                                <input type="text" name="search_term" placeholder="Indore" size="18" />
-                                <p class="searchtip" style="font-size: 90%">
-                                    Enter the value with which you want to search.
-                                </p>
+             	<div class="row">
+             		<div class="col-lg-3" id="filter_container">
+             		<strong>Filter results</strong>
+             			<form action="" method="post">
+             				<div id="filter">
+             					<strong>Name: </strong> <br>
+             					<input type="text" name="name" placeholder="Ram" id="name" 
+                                    data-dojo-type="dijit/form/TextBox"/>
+                                <input type="submit" name="name_sub" value="Go" label="Go" id="name_sub"
+                                    data-dojo-type="dijit/form/Button" />
+             				</div>
+             				<div id="filter">
+             					<strong>Phone number: </strong> <br>
+             					<input type="text" name="phone_no" placeholder="1264537" id="phoneNo" 
+                                    data-dojo-type="dijit/form/TextBox"/>
                             </div>
-                             </form>                        
-                        <!-- filter box ends -->
-                        </div>
-
-                        <!-- include css and js files  for grid-->
-                        <link rel="stylesheet" type="text/css" href="../../assests/css/grid.css">
-                        <link rel="stylesheet" type="text/css" href="../../assests/js/dojo-1.9.3/dojox/grid/enhanced/resources/claro/EnhancedGrid.css">
-                        <link rel="stylesheet" type="text/css" href="../../assests/js/dojo-1.9.3/dojox/grid/enhanced/resources/EnhancedGrid_rtl.css">
-                        <script src="../../assests/js/grid.js"></script>
-                        <div id="gridDiv">
-                           
-                        </div>
-
-                    </div> <!-- Followers Tab ends -->
-
-                    <!-- Send SMS tab begins -->
-                    <div data-dojo-type="dijit/layout/ContentPane" title="Send SMS">
-                        <!-- Inner Tabs for birthday, anniversary and other information sepatrely begins-->
-                        <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true">
-                            <!--Birthday tab begins -->
-                            <div data-dojo-type="dijit/layout/ContentPane" title="Birthday" selected="true">
-                                <h3> Today is Birthday of Bhakts:</h3>
-                                <ul>
-                                    <li>-------User1--------</li>
-                                    <li>-------User2--------</li>
-                                    <li>-------User3--------</li>
-                                    <li>-------User4--------</li>
-                                    <li>-------User5--------</li>
-                                </ul>
-                                <form action="sendSms.php" method="get">
-                                    <input type="submit" value="birthday" label="Send" id="birthday"
+             				<div id="filter">
+             					<strong>Location: </strong> <br>
+             					<select name="loc_name" id="locName" data-dojo-type="dijit/form/FilteringSelect">
+                                    <option value="">Select a Location</option>
+                                    <option value="abc">Indore</option>
+                                    <option value="xyz">Ujjain</option>
+                                    <option value="pqr">Pqr</option>
+                                </select>
+                                <input type="submit" name="loc_sub" value="Go" label="Go" id="loc_sub"
                                     data-dojo-type="dijit/form/Button" />
-                                </form>
-                            </div> <!-- birthday tab ends -->
-                            
-                            <!-- Anniversary tab begins -->
-                            <div data-dojo-type="dijit/layout/ContentPane" title="Anniversary">
-                                <h3> Today is Anniversary of following Bhakts:</h3>
-                                <ul>
-                                    <li>-------User1--------</li>
-                                    <li>-------User2--------</li>
-                                    <li>-------User3--------</li>
-                                    <li>-------User4--------</li>
-                                    <li>-------User5--------</li>
-                                </ul>
-                                <form action="sendSms.php" method="get">
-                                    <input type="submit" value="anniversary" label="Send" id="anniversary"
-                                    data-dojo-type="dijit/form/Button" />
-                                </form>
-                            </div> <!-- Anniversary tab ends -->
-
-                            <!-- Information tab begins -->
-                            <div data-dojo-type="dijit/layout/ContentPane" title="Information">
-                                <h3> Comming soon!!</h3>
-                                
-                                <form action="sendSms.php" method="get">
-                                    <input type="submit" value="information" label="Send" id="information"
-                                    data-dojo-type="dijit/form/Button" />
-                                </form>
-                            </div> <!-- Information tab ends -->
-
-                        </div><!-- end Inner Tabs for birthday, anniversary and other information sepatrely-->
-                    </div><!-- Send SMS tab end -->
-                    
-                </div><!-- Vertical Left tabs end -->
+             				</div>
+             				<div id="filter">
+             					<strong>Age: </strong> <br>
+             					<input type="checkbox" name="age" value="0-15">0-15<br>
+								<input type="checkbox" name="age" value="15-30">15-30<br>
+								<input type="checkbox" name="age" value="30-45">30-45<br>
+								<input type="checkbox" name="age" value="45-60">45-60<br>
+								<input type="checkbox" name="age" value="60-75">above 75<br>
+							</div>
+							<div id="filter">
+             					<strong>Baithak: </strong> <br>
+             					<input type="text" name="baithak_date" id="baithakDate" value="2005-12-30"
+    							data-dojo-type="dijit/form/DateTextBox"/>
+    						</div>
+    						<div id="filter">
+             					<strong>Profession: </strong> <br>
+             					<select name="Profession" id="profession" data-dojo-type="dijit/form/FilteringSelect" required="true">
+                                    <option value="">Select a profession</option>
+                                    <option value="abc">doctor</option>
+                                    <option value="xyz">engineer</option>
+                                    <option value="pqr">Pqr</option>
+                                </select>
+               				</div>
+               				<div id="filter">
+             					<strong>Birthday: </strong> <br>
+             					<input type="text" name="birthday" id="birthday" value="2005-12-30"
+    							data-dojo-type="dijit/form/DateTextBox"/>
+    						</div>
+    						<div id="filter">
+             					<strong>Anniversary: </strong> <br>
+             					<input type="text" name="anniversary" id="anniversary" value="2005-12-30"
+    							data-dojo-type="dijit/form/DateTextBox"/>
+    						</div>
+             			</form>
+             		</div>
+             	</div>
             </div> 
         
             <!-- Bottom Region of Layout -->
             <div dojoType="dijit.layout.ContentPane" region="bottom" splitter="true"> 
-                &copy; Suryoday Trust . <span style="float:right">Powered By <a  href="#">Developement Center</a> <span>
+                &copy; Suryoday Trust . <span style="float:right">Powered By <a  href="#">Developement Center</a> </span>
             </div>
         </div>
             <!-- end of Border Layout Container -->   
