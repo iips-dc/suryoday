@@ -111,6 +111,66 @@
                         </center>
                     </div> <!-- Employee List tab ends. -->
 
+                    <!-- Occupation entry tab begins -->
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Register Occupation" id="registerOccupation">
+                        <!-- form for registering occupation -->
+                        <form action="add_occupation.php" method="post">
+                            <pre>
+
+                                <strong>Occupation level one : </strong>          <input type="text" name="occupation_level_one" placeholder="occupation level one name" id="occupationLevelOne"
+                                    data-dojo-type="dijit/form/TextBox" />
+
+                                <strong>Occupation level two : </strong>          <input type="text" name="occupation_level_two" placeholder="occupation level two name" id="occupationLevelTwo"
+                                    data-dojo-type="dijit/form/TextBox" />
+
+                                <strong>Occupation level three : </strong>        <input type="text" name="occupation_level_three" placeholder="occupation level three name" id="occupationLevelThree"
+                                    data-dojo-type="dijit/form/TextBox" />
+                                
+                                <!--<strong>Organization : </strong>                  <input type="text" name="organization" placeholder="organization name" id="organization"
+                                    data-dojo-type="dijit/form/TextBox" />
+                                -->    
+                                <center>
+                                <input type="submit" value="Submit" label="Submit" name="submit" id="addOccupationOrganization" data-dojo-type="dijit/form/Button" />
+                                </center>
+                            </pre>
+                        </form>
+
+                    </div> <!-- Occupation entry form ends. -->
+
+                    <!-- Organization entry tab begins -->
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Register Organization " id="registerOrganization">
+                        <!-- form for registering organization -->
+                        <form action="add_organization.php" method="post">
+                            <pre>
+
+                                <strong>Name : </strong>                <input type="text" name="org_name" placeholder="Name" id="organizationName"
+                                    data-dojo-type="dijit/form/TextBox" />
+
+                                <strong>Address : </strong>             <input type="text" name="org_address" placeholder="Address" id="organizationAddress"
+                                    data-dojo-type="dijit/form/TextBox" />
+
+                                <strong>Area/Locality : </strong>       <input type="text" name="org_area" placeholder="Area/Locality" id="organizationAreaLocality"
+                                    data-dojo-type="dijit/form/TextBox" />
+
+                                <strong>City : </strong>                <input type="text" name="org_city" placeholder="City" id="organizationCity"
+                                    data-dojo-type="dijit/form/TextBox" />
+                                
+                                <strong>State : </strong>               <input type="text" name="org_state" placeholder="State" id="organizationState"
+                                    data-dojo-type="dijit/form/TextBox" />
+                                
+                                <strong>Country : </strong>             <input type="text" name="org_country" placeholder="Country" id="organizationCountry"
+                                    data-dojo-type="dijit/form/TextBox" />    
+                                
+                                <strong>Contact Number : </strong>      <input type="text" name="org_contact_number" placeholder="contact number" id="organizationContactNumber"
+                                    data-dojo-type="dijit/form/TextBox" />
+
+                                <center>
+                                <input type="submit" value="Submit" label="Submit" name="submit" id="addOrganization" data-dojo-type="dijit/form/Button" />
+                                </center>
+                            </pre>
+                        </form>
+
+                    </div> <!-- Organization entry form ends. -->
                 </div><!-- Vertical Left tabs end -->
             </div> 
         
@@ -130,6 +190,10 @@
         require(["dojo/parser", "dijit/MenuBar", "dijit/MenuBarItem", "dijit/PopupMenuBarItem",
     "dijit/DropDownMenu", "dijit/MenuItem", "dijit/layout/TabContainer", "dijit/form/RadioButton", "dojo/domReady!", "dijit/form/Textarea" ]);
 
+        //code to open page with desired tab selected by default:
+        dojo.ready(function(var tab) {
+            dijit.byId('tabContainer').selectChild(dijit.byId(tab));
+            );
      </script>
 
     <?php

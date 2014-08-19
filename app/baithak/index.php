@@ -101,10 +101,15 @@
                                     data-dojo-type="dijit/form/SimpleTextarea" rows="2" cols="50" style:"width:50px;" />                                 
                                 <!-- Drop down list:  dijit/form/FilteringSelect -->
                                 <strong>Assigned To: </strong>      <select name="assignedTo" id="assignedTo" data-dojo-type="dijit/form/FilteringSelect" required="true">
-                                    <option value="">Select a member</option>
-                                    <option value="abc">Abc</option>
-                                    <option value="xyz">Xyz</option>
-                                    <option value="pqr">Pqr</option>
+                                    <option value="-1">Select a member</option>
+                                    <?php
+										$query = "SELECT `user_info.first_name`, `user_info.last_name`, `employee_details.user_id` FROM user_info JOIN employee_details ON `user_info.user_id`=`employee_details.user_id`";
+										$result = mysqli_query($con,$query);
+										while ($row = mysqli_fetch_array($result)){
+			   								echo "<option value='.$row['user_id'].'>' '.$row['first_name'].' '.$row['last_name'].'</option>";
+										}
+
+									?>
                                 </select>
 
                                 <strong>Remark: </strong>           <input type="text" name="upay_remark" placeholder="to be done urgently!" id="upayRemark"
@@ -263,22 +268,3 @@
 
 </body>
 </html>
-
-<?php
-	if (isset($_post['findVisitor'])) {
-		# code...
-		$userid = $_post['userid'];
-		$query = "SELECT * FROM `user_info` WHERE `user_id` = '$userid'";
-		$queryrun = mysqli_query($con, $query);
-		$row = mysqli_fetch_array($queryrun);
-		$selectOccupation = mysqli_query($con, "SELECT `occupation_level_one_name` FROM `occupation_level_one` WHERE `occupation_level_one_id` = (SELECT `occupation_level_one_id` FROM `occupation` WHERE `userid` = '$userid')");
-		$selctQuery = mysqli_fetch_array($selectOccupation);
-		echo "<script rel='javascript'>
-				document.getElementById('userid').label = "+$row['user_id']+";
-				document.getElementById('firstName').label = "+$row['first_name']+";
-				document.getElementById('lastName').label = "+$row['last_name']+";
-				document.getElementById('contactNumber').label = "+$row['mobile_no']+";
-				document.getElementById('occupation').label = "+$row['occupation_level_one_name']+";
-		</script>";
-	}
-?>
