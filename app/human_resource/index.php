@@ -171,6 +171,56 @@
                         </form>
 
                     </div> <!-- Organization entry form ends. -->
+
+                     <!-- Add Employ tab begins -->
+                    <div data-dojo-type="dijit/layout/ContentPane" title="Add Employee " id="addEmployee">
+                        <!-- form for registering organization -->
+                        <form action="add_employee.php" method="post">
+                            <pre>
+                                <!-- text inputs:  dijit/form/TextBox -->
+                                <strong>Userid: </strong>         <input type="text" name="userid" id="userid"
+                                    data-dojo-type="dijit/form/TextBox"/><br>
+
+                                <strong>Department:</strong>       <select name="select" data-dojo-type="dojox.form.DropDownSelect">
+                                   <option value="iips">IIPS</option>
+                                   <option value="ims">IMS</option>
+                                   <option value="soc">SOC</option>
+                                   <option value="emrc">EMRC</option>
+                                   <option value=""></option>
+                                   </select><br>
+
+                                <strong>Designation:</strong>      <select name="select" data-dojo-type="dojox.form.DropDownSelect">
+                                 <option value="director">Director</option>
+                                 <option value="hod">HOD</option>
+                                 <option value="bf">Batch Facilitator</option>
+                                 <option value=""></option>
+                                 <option value=""></option>
+                                </select><br>
+
+                                <strong>Working LOC: </strong>     <input type="text" name="userid" id="userid"
+                                    data-dojo-type="dijit/form/TextBox"/><br>
+
+                                <strong>Date Of Joining:</strong>  <input type="text" name="employee_joining_date" placeholder="2014-12-01" id="employeeJoiningDate" value="2005-12-30" constraints="{datePattern:'yyyy-MM-dd', strict:true}" data-dojo-type="dijit/form/DateTextBox" required="true"/>
+
+                                <strong>Paid:</strong>             <input dojoType="dijit.form.RadioButton" id="val1" name="group1" 
+                                checked="checked" value="yes" type="radio" /><label for="val1"> Yes </label><input dojotype="dijit.form.RadioButton" id="val2"  name ="group1" value="no" type="radio"/><label for="val2"> No </label>
+
+                                                
+                                                <button data-dojo-type="dijit/form/Button" type="submit" name="submitButton" value="Submit">Submit</button>
+                                               
+
+            
+                                                                     
+                            </pre>                           
+                                <!-- submit button:  dijit/form/Button -->
+                                <center>
+                               
+                                </center>              
+                        </form>
+                        </form>
+
+                    </div> <!-- Organization entry form ends. -->
+
                 </div><!-- Vertical Left tabs end -->
             </div> 
         
