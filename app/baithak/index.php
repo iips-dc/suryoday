@@ -106,7 +106,8 @@
 										$query = "SELECT `user_info.first_name`, `user_info.last_name`, `employee_details.user_id` FROM user_info JOIN employee_details ON `user_info.user_id`=`employee_details.user_id`";
 										$result = mysqli_query($con,$query);
 										while ($row = mysqli_fetch_array($result)){
-			   								echo "<option value='.$row['user_id'].'>' '.$row['first_name'].' '.$row['last_name'].'</option>";
+											$name = $row['user_id']." ".$row['first_name']." ".$row['last_name'];
+			   								echo "<option value='$name'</option>";
 										}
 
 									?>
