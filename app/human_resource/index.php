@@ -2,6 +2,22 @@
 <?php
     include '../../includes/login/core.inc.php';
     include '../../includes/login/connect.inc.php';
+
+    if (isset($_POST['editSubmit'])) {
+        # code...
+        $purpose_id = $_POST['purpose_id'];
+        $purpose_name = $_POST['purpose_name'];
+
+        $query = mysqli_query($con, "UPDATE `purpose` SET `purpose_id`='$purpose_id',`purpose_name`='$purpose_name' WHERE 'purpose_id'='$purpose_id'");
+        echo '<script>alert("Edited Successfully!");</script>';
+    }
+
+    $result = mysqli_query($con, "SELECT * FROM `purpose`");
+    $row = mysqli_fetch_assoc($result);
+    
+    $purpose_id = $row['purpose_id'];
+    $purpose_name = $row['purpose_name'];
+
 ?>
 <!-- /End of includes -->
 
@@ -302,9 +318,24 @@
 
                     <!-- Purpose tab begins -->
                     <div data-dojo-type="dijit/layout/ContentPane" title="Purpose" id="purpose">
-                        <ul>
-                            <li>Purpose Id  </li> <li> Purpose Details</li>
-                        </ul> 
+                        <table border="5px">
+                            <tr>
+                                <th>Purpose Id</th>
+                                <th>Purpose Name</th>
+                                <th>Edit</th>
+                            </tr>
+                            <?php
+                                echo "<tr>
+                                    <td> <input type='text' class='editme' name='purpose_id' size='10' style='color:blue;border-color:white;border-top:white;border-left:white;background-color:white' disabled value=".$purpose_id. "> </td>
+                                    <td> <input type='text' class='editme' name='purpose_name' size='10' style='color:blue;border-color:white;border-top:white;border-left:white;background-color:white' disabled value=".$purpose_name. "> </td>
+                                    <td> <input type='submit' id='submitbutton' name='editSubmit' onSubmit='editme()' value='Submit'> </td>
+                                </tr>";
+                            ?>
+                        </table> 
+
+                        <form action="" method="POST">
+                            <input type="text" name="pupose_id" value="purpose_id" disabled>
+                        </form>>
                     </div>
                 </div><!-- Vertical Left tabs end -->
             </div> 
@@ -329,6 +360,28 @@
         dojo.ready(function(var tab) {
             dijit.byId('tabContainer').selectChild(dijit.byId(tab));
             );
+
+        function editme()
+        {
+            document.getElementsById('editme').style.ba='red';
+            //alert('');
+            //editme.style.background-color='red';
+        }
+        
+        $(document).ready()
+        {
+        
+            $( "#submitbutton" ).click(function() {
+            
+            
+                $('.editme').removeAttr('style');
+                $('.editme').removeAttr('disabled');
+                $('#submitbutton').removeAttr('style');
+                
+            
+            });
+          
+       }
      </script>
 
     <?php
