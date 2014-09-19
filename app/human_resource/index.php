@@ -3,19 +3,19 @@
     include '../../includes/login/core.inc.php';
     include '../../includes/login/connect.inc.php';
 
-    if (isset($_POST['insertSubmit'])) {
+    if (isset($_POST['insertPurpose'])) {
         # code...
         $purpose_id = $_POST['purpose_id'];
         $purpose_name = $_POST['purpose_name'];
 
         $query = mysqli_query($con, "INSERT INTO `purpose`(`purpose_id`, `purpose_name`) VALUES ('$purpose_id','$purpose_name')");
-        echo '<script>alert("PUrpose Inserted Successfully!");</script>';    
+        echo '<script>alert("Purpose Inserted Successfully!");</script>';    
     }
-    elseif (isset($_POST['updateSubmit'])) {
+    elseif (isset($_POST['updatePurpose'])) {
         $purpose_id = $_POST['purpose_id'];
         $purpose_name = $_POST['purpose_name'];
 
-        $query = mysqli_query($con, "UPDATE `purpose` SET `purpose_id`='$purpose_id',`purpose_name`='$purpose_name' WHERE 'purpose_id'='$purpose_id'");
+        $query = mysqli_query($con, "UPDATE `purpose` SET `purpose_name`='$purpose_name' WHERE 'purpose_id'='$purpose_id'");
         echo '<script>alert("Edited Successfully!");</script>';
     }
 
@@ -376,7 +376,7 @@
                                         <strong> Purpose Name :     <input type="text" name="purpose_name" id="purposeName"
                                         data-dojo-type="dijit/form/TextBox"> <br> 
 
-                                                <input type="button" name="updatePurpose" value="Update" data-dojo-type="dijit/form/Button">                           
+                                                <button type="submit" name="updatePurpose" value="Update" data-dojo-type="dijit/form/Button">Update</button>                           
                                     </pre>                                        
                                 </form>
                             </div> <!-- Tab for updating purpose ends. -->
