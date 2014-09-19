@@ -3,20 +3,21 @@
     include '../../includes/login/core.inc.php';
     include '../../includes/login/connect.inc.php';
 
-    if (isset($_POST['editSubmit'])) {
+    if (isset($_POST['insertSubmit'])) {
         # code...
+        $purpose_id = $_POST['purpose_id'];
+        $purpose_name = $_POST['purpose_name'];
+
+        $query = mysqli_query($con, "INSERT INTO `purpose`(`purpose_id`, `purpose_name`) VALUES ('$purpose_id','$purpose_name')");
+        echo '<script>alert("PUrpose Inserted Successfully!");</script>';    
+    }
+    elseif (isset($_POST['updateSubmit'])) {
         $purpose_id = $_POST['purpose_id'];
         $purpose_name = $_POST['purpose_name'];
 
         $query = mysqli_query($con, "UPDATE `purpose` SET `purpose_id`='$purpose_id',`purpose_name`='$purpose_name' WHERE 'purpose_id'='$purpose_id'");
         echo '<script>alert("Edited Successfully!");</script>';
     }
-
-    $result = mysqli_query($con, "SELECT * FROM `purpose`");
-    $row = mysqli_fetch_assoc($result);
-    
-    $purpose_id = $row['purpose_id'];
-    $purpose_name = $row['purpose_name'];
 
 ?>
 <!-- /End of includes -->
@@ -318,24 +319,68 @@
 
                     <!-- Purpose tab begins -->
                     <div data-dojo-type="dijit/layout/ContentPane" title="Purpose" id="purpose">
-                        <table border="5px">
-                            <tr>
-                                <th>Purpose Id</th>
-                                <th>Purpose Name</th>
-                                <th>Edit</th>
-                            </tr>
-                            <?php
-                                echo "<tr>
-                                    <td> <input type='text' class='editme' name='purpose_id' size='10' style='color:blue;border-color:white;border-top:white;border-left:white;background-color:white' disabled value=".$purpose_id. "> </td>
-                                    <td> <input type='text' class='editme' name='purpose_name' size='10' style='color:blue;border-color:white;border-top:white;border-left:white;background-color:white' disabled value=".$purpose_name. "> </td>
-                                    <td> <input type='submit' id='submitbutton' name='editSubmit' onSubmit='editme()' value='Submit'> </td>
-                                </tr>";
-                            ?>
-                        </table> 
+                        
+                    <!-- Inner Tabs for Purpose-->
+                        <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true">
+                            <div data-dojo-type="dijit/layout/ContentPane" title="Purpose List" selected="true">
+                                <!-- List of purpose -->
+                                    <pre>
+                                        <table border="5px">
+                                            <tr>
+                                                <th>Purpose Id</th>
+                                                <th>Purpose Name</th>
+                            
+                                            </tr>
+                                            <?php
+                                                $result = mysqli_query($con, "SELECT * FROM `purpose`");
+                                                
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    # code...
+                                                    echo "<tr>
+                                                        <td> ".$row['purpose_id']. " </td>
+                                                        <td> ".$row['purpose_name']. " </td>
+                                                    </tr>";
+                                                }
+                                                if (mysqli_num_rows($result) == NULL) {
+                                                    # code...
+                                                    echo "<tr>
+                                                            <td>No purpose entry.</td>
+                                                    </tr>";
+                                                }
+                                                
+                                            ?>
+                                        </table>                                                                           
+                                    </pre>                                        
+                            </div> <!-- Tab for purpose list ends. -->
 
-                        <form action="" method="POST">
-                            <input type="text" name="pupose_id" value="purpose_id" disabled>
-                        </form>>
+                            <div data-dojo-type="dijit/layout/ContentPane" title="Add new purpose">
+                                <!-- form for inserting purpose -->
+                                <form action="#" method="post">
+                                    <pre>
+                                        <strong> Purpose Id :       <input type="text" name="purpose_id" id="purposeId"
+                                        data-dojo-type="dijit/form/TextBox"> <br>
+                                        <strong> Purpose Name :     <input type="text" name="purpose_name" id="purposeName"
+                                        data-dojo-type="dijit/form/TextBox"> <br> 
+
+                                                <button type="submit" name="insertPurpose" value="Insert" data-dojo-type="dijit/form/Button">Insert</button>                           
+                                    </pre>                                        
+                                </form>
+                            </div> <!-- Tab for inserting purpose ends. -->
+
+                            <div data-dojo-type="dijit/layout/ContentPane" title="Update Purpose">
+                                <!-- form for updating purpose -->
+                                <form action="#" method="post">
+                                    <pre>
+                                        <strong> Purpose Id :       <input type="text" name="purpose_id" id="purposeId"
+                                        data-dojo-type="dijit/form/TextBox"> <br>
+                                        <strong> Purpose Name :     <input type="text" name="purpose_name" id="purposeName"
+                                        data-dojo-type="dijit/form/TextBox"> <br> 
+
+                                                <input type="button" name="updatePurpose" value="Update" data-dojo-type="dijit/form/Button">                           
+                                    </pre>                                        
+                                </form>
+                            </div> <!-- Tab for updating purpose ends. -->
+                        
                     </div>
                 </div><!-- Vertical Left tabs end -->
             </div> 
