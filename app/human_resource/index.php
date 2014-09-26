@@ -2,6 +2,23 @@
 <?php
     include '../../includes/login/core.inc.php';
     include '../../includes/login/connect.inc.php';
+
+    if (isset($_POST['insertPurpose'])) {
+        # code...
+        $purpose_id = $_POST['purpose_id'];
+        $purpose_name = $_POST['purpose_name'];
+
+        $query = mysqli_query($con, "INSERT INTO `purpose`(`purpose_id`, `purpose_name`) VALUES ('$purpose_id','$purpose_name')");
+        echo '<script>alert("Purpose Inserted Successfully!");</script>';    
+    }
+    elseif (isset($_POST['updatePurpose'])) {
+        $purpose_id = $_POST['purpose_id'];
+        $purpose_name = $_POST['purpose_name'];
+
+        $query = mysqli_query($con, "UPDATE `purpose` SET `purpose_name`='$purpose_name' WHERE 'purpose_id'='$purpose_id'");
+        echo '<script>alert("Edited Successfully!");</script>';
+    }
+
 ?>
 <!-- /End of includes -->
 
@@ -302,9 +319,74 @@
 
                     <!-- Purpose tab begins -->
                     <div data-dojo-type="dijit/layout/ContentPane" title="Purpose" id="purpose">
+<<<<<<< HEAD
                         <ul>
                             <li>Purpose Id  </li> <li> Purpose Details</li>
                         </ul> 
+=======
+                        
+                    <!-- Inner Tabs for Purpose-->
+                        <div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center', tabStrip:true">
+                            <div data-dojo-type="dijit/layout/ContentPane" title="Purpose List" selected="true">
+                                <!-- List of purpose -->
+                                    <pre>
+                                        <table border="5px">
+                                            <tr>
+                                                <th>Purpose Id</th>
+                                                <th>Purpose Name</th>
+                            
+                                            </tr>
+                                            <?php
+                                                $result = mysqli_query($con, "SELECT * FROM `purpose`");
+                                                
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    # code...
+                                                    echo "<tr>
+                                                        <td> ".$row['purpose_id']. " </td>
+                                                        <td> ".$row['purpose_name']. " </td>
+                                                    </tr>";
+                                                }
+                                                if (mysqli_num_rows($result) == NULL) {
+                                                    # code...
+                                                    echo "<tr>
+                                                            <td>No purpose entry.</td>
+                                                    </tr>";
+                                                }
+                                                
+                                            ?>
+                                        </table>                                                                           
+                                    </pre>                                        
+                            </div> <!-- Tab for purpose list ends. -->
+
+                            <div data-dojo-type="dijit/layout/ContentPane" title="Add new purpose">
+                                <!-- form for inserting purpose -->
+                                <form action="#" method="post">
+                                    <pre>
+                                        <strong> Purpose Id :       <input type="text" name="purpose_id" id="purposeId"
+                                        data-dojo-type="dijit/form/TextBox"> <br>
+                                        <strong> Purpose Name :     <input type="text" name="purpose_name" id="purposeName"
+                                        data-dojo-type="dijit/form/TextBox"> <br> 
+
+                                                <button type="submit" name="insertPurpose" value="Insert" data-dojo-type="dijit/form/Button">Insert</button>                           
+                                    </pre>                                        
+                                </form>
+                            </div> <!-- Tab for inserting purpose ends. -->
+
+                            <div data-dojo-type="dijit/layout/ContentPane" title="Update Purpose">
+                                <!-- form for updating purpose -->
+                                <form action="#" method="post">
+                                    <pre>
+                                        <strong> Purpose Id :       <input type="text" name="purpose_id" id="purposeId"
+                                        data-dojo-type="dijit/form/TextBox"> <br>
+                                        <strong> Purpose Name :     <input type="text" name="purpose_name" id="purposeName"
+                                        data-dojo-type="dijit/form/TextBox"> <br> 
+
+                                                <button type="submit" name="updatePurpose" value="Update" data-dojo-type="dijit/form/Button">Update</button>                           
+                                    </pre>                                        
+                                </form>
+                            </div> <!-- Tab for updating purpose ends. -->
+                        
+>>>>>>> c377a8370f7e218c3f5b1c56952ae43820a73f83
                     </div>
                 </div><!-- Vertical Left tabs end -->
             </div> 
@@ -329,6 +411,28 @@
         dojo.ready(function(var tab) {
             dijit.byId('tabContainer').selectChild(dijit.byId(tab));
             );
+
+        function editme()
+        {
+            document.getElementsById('editme').style.ba='red';
+            //alert('');
+            //editme.style.background-color='red';
+        }
+        
+        $(document).ready()
+        {
+        
+            $( "#submitbutton" ).click(function() {
+            
+            
+                $('.editme').removeAttr('style');
+                $('.editme').removeAttr('disabled');
+                $('#submitbutton').removeAttr('style');
+                
+            
+            });
+          
+       }
      </script>
 
     <?php
